@@ -7,69 +7,86 @@
 
     <Button
         android:id="@+id/document"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/ability"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginLeft="39dp"
+        android:layout_marginStart="39dp"
         android:drawableTop="@mipmap/apple"
         android:text="پرونده تخصصی تغذیه و فعالیت بدنی" />
 
     <Button
         android:id="@+id/spplan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/document"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/fdplan"
+        android:layout_alignStart="@+id/fdplan"
+        android:layout_below="@+id/fdplan"
         android:drawableTop="@mipmap/exercisecycle"
         android:text="برنامه ورزشی" />
 
     <Button
         android:id="@+id/fdplan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/spplan"
-        android:layout_alignBottom="@+id/spplan"
-        android:layout_centerHorizontal="true"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="41dp"
         android:drawableTop="@mipmap/fish"
         android:text="برنامه تغذیه" />
 
     <Button
         android:id="@+id/ability"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/document"
+        android:layout_alignStart="@+id/document"
         android:layout_below="@+id/fdplan"
         android:drawableTop="@mipmap/medalion"
         android:text="استعدادیابی" />
 
     <Button
         android:id="@+id/sptest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/ability"
+        android:layout_alignStart="@+id/ability"
         android:layout_below="@+id/ability"
         android:drawableTop="@mipmap/clipboard"
         android:text="آزمون های ورزشی" />
 
     <Button
         android:id="@+id/terminology"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sptest"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/spplan"
+        android:layout_alignStart="@+id/spplan"
+        android:layout_below="@+id/spplan"
         android:drawableTop="@mipmap/weigher"
         android:text="اصطلاحات علمی در علوم ورزشی" />
 
     <Button
         android:id="@+id/massage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/terminology"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/sptest"
+        android:layout_alignStart="@+id/sptest"
+        android:layout_below="@+id/sptest"
         android:drawableTop="@mipmap/waist"
         android:text="آموزش ماساژ" />
 
     <Button
         android:id="@+id/bodybld"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/massage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/terminology"
+        android:layout_alignStart="@+id/terminology"
+        android:layout_below="@+id/sptest"
         android:drawableTop="@mipmap/handmuscle"
         android:text="آموزش حرکات بدن سازی" />
 </RelativeLayout>
