@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Parvaneh.iml" filepath="$PROJECT_DIR$/.idea/Parvaneh.iml" />
-      <module fileurl="file://C:\Users\Zahra\AndroidStudioProjects\Parvaneh\Parvaneh.iml" filepath="C:\Users\Zahra\AndroidStudioProjects\Parvaneh\Parvaneh.iml" />
-      <module fileurl="file://D:\Programming\Android\Android Studio\Parvaneh\Parvaneh.iml" filepath="D:\Programming\Android\Android Studio\Parvaneh\Parvaneh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parvaneh.iml" filepath="$PROJECT_DIR$/Parvaneh.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Programming\Android\Android Studio\Parvaneh\app\app.iml" filepath="D:\Programming\Android\Android Studio\Parvaneh\app\app.iml" />
     </modules>
   </component>
 </project>

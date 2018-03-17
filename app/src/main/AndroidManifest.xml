@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Splash">
@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Intro"/>
         <activity android:name=".MenuActivity" />
         <activity android:name=".documentActivity" />
         <activity android:name=".SportPlan" />
@@ -24,7 +25,7 @@
         <activity android:name=".SportTest" />
         <activity android:name=".Terminology" />
         <activity android:name=".Massage" />
-        <activity android:name=".BodyBuild"></activity>
+        <activity android:name=".BodyBuild" />
     </application>
 
 </manifest>
