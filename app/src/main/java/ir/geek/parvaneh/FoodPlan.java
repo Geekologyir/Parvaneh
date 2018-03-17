@@ -1,17 +1,13 @@
 package ir.geek.parvaneh;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Splash extends AppCompatActivity {
-
+public class FoodPlan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-        startActivity(new Intent(Splash.this,MenuActivity.class));
+        setContentView(R.layout.food_plan);
     }
 }

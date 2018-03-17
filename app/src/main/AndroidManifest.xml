@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".documentActivity" />
+        <activity android:name=".SportPlan" />
+        <activity android:name=".FoodPlan" />
+        <activity android:name=".Ability" />
+        <activity android:name=".SportTest" />
+        <activity android:name=".Terminology" />
+        <activity android:name=".Massage" />
+        <activity android:name=".BodyBuild"></activity>
     </application>
 
 </manifest>
