@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
         spplan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,SportPlan.class));
+                startActivity(new Intent(MenuActivity.this,SportPlanActivity.class));
             }
         });
 
@@ -32,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
         fdplan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,FoodPlan.class));
+                startActivity(new Intent(MenuActivity.this,FoodPlanActivity.class));
             }
         });
 
@@ -40,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
         ability.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,Ability.class));
+                startActivity(new Intent(MenuActivity.this,AbilityActivity.class));
             }
         });
 
@@ -48,7 +48,7 @@ public class MenuActivity extends AppCompatActivity {
         sptest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,SportTest.class));
+                startActivity(new Intent(MenuActivity.this,SportTestActivity.class));
             }
         });
 
@@ -56,7 +56,7 @@ public class MenuActivity extends AppCompatActivity {
         terminology.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,Terminology.class));
+                startActivity(new Intent(MenuActivity.this,TerminologyActivity.class));
             }
         });
 
@@ -64,7 +64,7 @@ public class MenuActivity extends AppCompatActivity {
         massage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,Massage.class));
+                startActivity(new Intent(MenuActivity.this,MassageActivity.class));
             }
         });
 
@@ -72,7 +72,7 @@ public class MenuActivity extends AppCompatActivity {
         bodybld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,BodyBuild.class));
+                startActivity(new Intent(MenuActivity.this,BodyBuildActivity.class));
             }
         });
     }

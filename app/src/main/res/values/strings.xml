@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Parvaneh</string>
+    <string name="title_activity_login">ورود</string>
+
+    <!-- Strings relatedactivity_loginogin -->
+    <string name="login">ورود به حساب کاربری</string>
+    <string name="signup">ایجاد حساب کاربری</string>
+    <string name="email">پست الکترونیک</string>
+    <string name="password">رمز ورود</string>
+    <string name="password_confirm">تکرار رمز ورود</string>
+    <string name="forgetLink">رمزت را فراموش کرده ای؟</string>
+    <string name="signupQ">حساب کاربری نداری؟ </string>
+    <string name="signupLink">ثبت نام کن</string>
+
+    <string name="action_sign_in">ورود</string>
+    <string name="action_sign_up">ٍثبت نام</string>
+    <string name="action_retrieve">بازیابی</string>
+    <string name="action_sign_in_short">ورود</string>
+    <string name="error_invalid_email">پست الکترونیک وارد شده نامعتبر است</string>
+    <string name="error_invalid_password">رمز ورود وارد شده نامعتبر است</string>
+    <string name="error_incorrect_password">رمز وارد شده نادرست است</string>
+    <string name="error_field_required">وارد کردن این گزینه اجباری است</string>
+    <string name="permission_rationale">"دسترسی به مخاطبان جهت تکمیل خودکار پست الکترونیک به کار می رود."</string>
+    <string name="loginq">حساب کاربری داری؟</string>
+    <string name="loginLink">وارد شو</string>
+    <string name="login_error">رمزورود وارد شده اشتباه است و یا کاربری با این پست الکترونیک وجود ندارد.</string>
+    <string name="next">بعدی</string>
+    <string name="start">شروع</string>
+    <string name="forget">بازیابی رمزورود</string>
+
 </resources>

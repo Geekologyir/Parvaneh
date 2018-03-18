@@ -28,7 +28,7 @@ public class FontChanger {
                 view.setTypeface(face);
             }
             else if (views.getChildAt(i) instanceof Button){
-                TextView view= (TextView) views.getChildAt(i);
+                Button view= (Button) views.getChildAt(i);
                 view.setTypeface(face);
             }
         }
