@@ -1,14 +1,20 @@
 package ir.geek.parvaneh;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.support.v7.widget.Toolbar;
 
 public class MenuActivity extends AppCompatActivity {
+
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         setTitle("");
+
+        Toolbar toolbar=(Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
 
         Button document=(Button)findViewById(R.id.document);
         document.setOnClickListener(new View.OnClickListener() {
