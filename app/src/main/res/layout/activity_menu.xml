@@ -13,7 +13,7 @@
         tools:context="ir.geek.parvaneh.MenuActivity">
         <android.support.design.widget.NavigationView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
             android:background="#f0f0f0"
             app:headerLayout="@layout/header"
