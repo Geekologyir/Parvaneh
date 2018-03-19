@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 public class SplashActivity extends Activity {
-    FontChanger fontChanger;
     RelativeLayout layout;
 
     @Override
@@ -22,8 +21,6 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.activity_splash);
         layout = (RelativeLayout) findViewById(R.id.activity_splash);
-        fontChanger=new FontChanger(this);
-        fontChanger.changeAllViewsFonts(layout,"behdad");
         //Run IntroActivity after activity_splash
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

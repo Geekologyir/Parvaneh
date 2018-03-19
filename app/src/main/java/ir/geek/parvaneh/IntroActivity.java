@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 public class IntroActivity extends Activity {
 
-    FontChanger fontChanger;
     RelativeLayout layout;
     ViewPager viewPager;
     Button nextBtn, skipBtn;
@@ -76,8 +75,6 @@ public class IntroActivity extends Activity {
             }
         });
 
-        fontChanger=new FontChanger(this);
-        fontChanger.changeAllViewsFonts(layout,"behdad");
     }
     void addButton(int current){
         dots = new TextView[layouts.length];

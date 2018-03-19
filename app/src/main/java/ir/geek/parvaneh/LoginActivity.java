@@ -60,7 +60,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private TextView signupLink;
 
-    FontChanger fontChanger;
     RelativeLayout layout;
 
     @Override
@@ -68,8 +67,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         layout = (RelativeLayout) findViewById(R.id.loginActivity);
-        fontChanger=new FontChanger(this);
-        fontChanger.changeAllViewsFonts(layout,"behdad");
 
         // Set up the activity_login form.
         mEmailView = (EditText) findViewById(R.id.email);
