@@ -26,6 +26,10 @@ public class MenuActivity extends AppCompatActivity {
         Toolbar toolbar=(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
+        mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer);
+        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToogle);
+
         Button document=(Button)findViewById(R.id.document);
         document.setOnClickListener(new View.OnClickListener() {
             @Override
