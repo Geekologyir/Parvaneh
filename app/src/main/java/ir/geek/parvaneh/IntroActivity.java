@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class IntroActivity extends Activity {
 
     RelativeLayout layout;
@@ -76,6 +78,10 @@ public class IntroActivity extends Activity {
         });
 
     }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
     void addButton(int current){
         dots = new TextView[layouts.length];
 
@@ -99,8 +105,8 @@ public class IntroActivity extends Activity {
 
     private void LaunchHomeScreen() {
         finish();
-        //startActivity(new Intent(IntroActivity.this, LoginActivity.class));
-        startActivity(new Intent(IntroActivity.this, MenuActivity.class));
+        startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+        //startActivity(new Intent(IntroActivity.this, MenuActivity.class));
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
     }
