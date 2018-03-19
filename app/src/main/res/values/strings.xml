@@ -27,14 +27,8 @@
     <string name="next">بعدی</string>
     <string name="start">شروع</string>
     <string name="forget">بازیابی رمزورود</string>
-    <string name="document">پرونده تخصصی تغذیه و فعالیت بدنی</string>
-    <string name="spplan">برنامه ورزشی</string>
-    <string name="sptest">آزمون های ورزشی</string>
-    <string name="bodybld">آموزش حرکات بدن سازی</string>
-    <string name="fdplan">برنامه تغذیه</string>
-    <string name="ability">استعدادیابی</string>
-    <string name="terminology">اصطلاحات علمی در علوم ورزشی</string>
-    <string name="massage">آموزش ماساژ</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 
 </resources>
