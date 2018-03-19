@@ -79,5 +79,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this,BodyBuildActivity.class));
             }
         });
+
+
     }
 }
