@@ -110,23 +110,26 @@
 
 
     </ScrollView>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/login_form"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:layoutDirection="rtl">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signupQ" />
+
         <TextView
+            android:id="@+id/signUpLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signupLink"
-            android:textColor="@color/link"
-            android:id="@+id/signUpLink"/>
+            android:textColor="@color/link" />
     </LinearLayout>
     <!-- Login progress -->
     <ProgressBar

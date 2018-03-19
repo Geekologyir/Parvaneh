@@ -40,8 +40,9 @@
 
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <Button
@@ -78,8 +79,6 @@
                     android:id="@+id/spplan"
                     android:layout_width="110dp"
                     android:layout_height="130dp"
-                    android:layout_alignLeft="@+id/document"
-                    android:layout_alignStart="@+id/document"
                     android:layout_below="@+id/document"
                     android:drawableTop="@mipmap/exercisecycle"
                     android:text="برنامه ورزشی" />
@@ -112,8 +111,6 @@
                     android:layout_height="130dp"
                     android:layout_alignLeft="@+id/bodybld"
                     android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/bodybld"
-                    android:layout_marginTop="32dp"
                     android:drawableTop="@mipmap/apple"
                     android:text="پرونده تخصصی تغذیه و فعالیت بدنی" />
 
@@ -121,11 +118,8 @@
                     android:id="@+id/bodybld"
                     android:layout_width="110dp"
                     android:layout_height="130dp"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/sptest"
-                    android:layout_marginLeft="64dp"
-                    android:layout_marginStart="64dp"
                     android:drawableTop="@mipmap/handmuscle"
                     android:text="آموزش حرکات بدن سازی" />
             </RelativeLayout>
