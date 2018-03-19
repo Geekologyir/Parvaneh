@@ -99,7 +99,8 @@ public class IntroActivity extends Activity {
 
     private void LaunchHomeScreen() {
         finish();
-        startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+        //startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+        startActivity(new Intent(IntroActivity.this, MenuActivity.class));
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
     }

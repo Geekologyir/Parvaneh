@@ -5,6 +5,7 @@
     <include layout="@layout/toolbar"
         android:id="@+id/my_toolbar"/>
     <android.support.v4.widget.DrawerLayout
+
         android:id="@+id/drawer"
         android:layout_below="@id/my_toolbar"
         xmlns:tools="http://schemas.android.com/tools"
@@ -41,89 +42,79 @@
 
 
             <RelativeLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/massage"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignLeft="@+id/terminology"
-                    android:layout_alignStart="@+id/terminology"
-                    android:layout_below="@+id/terminology"
-                    android:drawableTop="@mipmap/waist"
-                    android:text="آموزش ماساژ" />
+                <GridLayout
+                    android:id="@+id/menuGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:columnCount="2">
 
-                <Button
-                    android:id="@+id/ability"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignLeft="@+id/fdplan"
-                    android:layout_alignStart="@+id/fdplan"
-                    android:layout_below="@+id/fdplan"
-                    android:drawableTop="@mipmap/medalion"
-                    android:text="استعدادیابی" />
+                    <Button
+                        android:id="@+id/massage"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/waist"
+                        android:text="آموزش ماساژ" />
 
-                <Button
-                    android:id="@+id/sptest"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignLeft="@+id/spplan"
-                    android:layout_alignStart="@+id/spplan"
-                    android:layout_below="@+id/spplan"
-                    android:drawableTop="@mipmap/clipboard"
-                    android:text="آزمون های ورزشی" />
+                    <Button
+                        android:id="@+id/sptest"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/clipboard"
+                        android:text="آزمون های ورزشی" />
 
-                <Button
-                    android:id="@+id/spplan"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_below="@+id/document"
-                    android:drawableTop="@mipmap/exercisecycle"
-                    android:text="برنامه ورزشی" />
+                    <Button
+                        android:id="@+id/spplan"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/exercisecycle"
+                        android:text="برنامه ورزشی" />
 
-                <Button
-                    android:id="@+id/terminology"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignLeft="@+id/ability"
-                    android:layout_alignStart="@+id/ability"
-                    android:layout_below="@+id/ability"
-                    android:drawableTop="@mipmap/weigher"
-                    android:text="اصطلاحات علمی در علوم ورزشی" />
+                    <Button
+                        android:id="@+id/terminology"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/weigher"
+                        android:text="اصطلاحات علمی در علوم ورزشی" />
 
-                <Button
-                    android:id="@+id/fdplan"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignTop="@+id/document"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_toEndOf="@+id/bodybld"
-                    android:layout_toRightOf="@+id/bodybld"
-                    android:drawableTop="@mipmap/fish"
-                    android:text="برنامه تغذیه" />
+                    <Button
+                        android:id="@+id/fdplan"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/fish"
+                        android:text="برنامه تغذیه" />
 
-                <Button
-                    android:id="@+id/document"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignLeft="@+id/bodybld"
-                    android:layout_alignParentTop="true"
-                    android:drawableTop="@mipmap/apple"
-                    android:text="پرونده تخصصی تغذیه و فعالیت بدنی" />
+                    <Button
+                        android:id="@+id/document"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/apple"
+                        android:text="پرونده تخصصی تغذیه و فعالیت بدنی" />
 
-                <Button
-                    android:id="@+id/bodybld"
-                    android:layout_width="110dp"
-                    android:layout_height="130dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:drawableTop="@mipmap/handmuscle"
-                    android:text="آموزش حرکات بدن سازی" />
+                    <Button
+                        android:id="@+id/bodybld"
+                        android:layout_width="110dp"
+                        android:layout_height="130dp"
+                        android:drawableTop="@mipmap/handmuscle"
+                        android:text="آموزش حرکات بدن سازی" />
+
+                    <Button
+                        android:id="@+id/ability"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@mipmap/medalion"
+                        android:text="استعدادیابی" />
+                </GridLayout>
             </RelativeLayout>
+
+
         </ScrollView>
     </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>
