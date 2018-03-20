@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,13 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.Button;
 import android.support.v7.widget.Toolbar;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,15 +34,15 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button document;
-    Button spplan;
-    Button fdplan;
-    Button ability;
-    Button sptest;
-    Button terminology;
-    Button massage;
-    Button bodybld;
-    List<Button> btns;
+    RelativeLayout document;
+    RelativeLayout spplan;
+    RelativeLayout fdplan;
+    RelativeLayout talent;
+    RelativeLayout sptest;
+    RelativeLayout terminology;
+    RelativeLayout massage;
+    RelativeLayout bodybld;
+    List<RelativeLayout> btns;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToogle;
@@ -48,18 +52,23 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         setTitle("");
 
         Toolbar toolbar=(Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black);
 
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer);
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
         mDrawerLayout.addDrawerListener(mToogle);
 
-        btns = new ArrayList<Button>();
-        document=(Button)findViewById(R.id.document);
+        btns = new ArrayList<RelativeLayout>();
+        document=(RelativeLayout)findViewById(R.id.document);
+
         btns.add(document);
         document.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +76,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this,documentActivity.class));
             }
         });
-        spplan=(Button)findViewById(R.id.spplan);
+        spplan=(RelativeLayout)findViewById(R.id.spplan);
         btns.add(spplan);
         spplan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +85,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        fdplan=(Button)findViewById(R.id.fdplan);
+        fdplan=(RelativeLayout)findViewById(R.id.fdplan);
         btns.add(fdplan);
         fdplan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,16 +94,16 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        ability=(Button)findViewById(R.id.ability);
-        btns.add(ability);
-        ability.setOnClickListener(new View.OnClickListener() {
+        talent=(RelativeLayout)findViewById(R.id.talent);
+        btns.add(talent);
+        talent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MenuActivity.this,AbilityActivity.class));
             }
         });
 
-        sptest=(Button)findViewById(R.id.sptest);
+        sptest=(RelativeLayout)findViewById(R.id.sptest);
         btns.add(sptest);
         sptest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +112,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        terminology=(Button)findViewById(R.id.terminology);
+        terminology=(RelativeLayout)findViewById(R.id.terminology);
         btns.add(terminology);
         terminology.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +121,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        massage=(Button)findViewById(R.id.massage);
+        massage=(RelativeLayout)findViewById(R.id.massage);
         btns.add(massage);
         massage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +130,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        bodybld=(Button)findViewById(R.id.bodybld);
+        bodybld=(RelativeLayout)findViewById(R.id.bodybld);
         btns.add(bodybld);
         bodybld.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,24 +144,33 @@ public class MenuActivity extends AppCompatActivity {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int gridWidth = displayMetrics.widthPixels ;
+        int deviceWidth = displayMetrics.widthPixels ;
         ViewGroup.LayoutParams params;
-        for (Button btn:btns) {
+        for (RelativeLayout btn:btns) {
             params = btn.getLayoutParams();
-            params.width = gridWidth/2;
-            params.height = gridWidth/2;
+            params.width = (deviceWidth / 2) - 20;
+            params.height = (deviceWidth / 2) - 20;
             btn.setLayoutParams(params);
+
         }
-
-
-
-
-
-
-
     }
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (!mDrawerLayout.isDrawerOpen(GravityCompat.END)){
+                    mDrawerLayout.openDrawer(GravityCompat.END);
+                    return true;
+                }else{
+                    mDrawerLayout.closeDrawer(GravityCompat.END);
+                    return true;
+                }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

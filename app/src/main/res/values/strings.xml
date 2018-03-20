@@ -2,7 +2,12 @@
     <string name="app_name">Parvaneh</string>
     <string name="title_activity_login">ورود</string>
 
-    <!-- Strings relatedactivity_loginogin -->
+    <!-- Strings related activity_intro -->
+    <string name="next">بعدی</string>
+    <string name="start">شروع</string>
+    <string name="skip">رد شو</string>
+
+    <!-- Strings related activity_login -->
     <string name="login">ورود به حساب کاربری</string>
     <string name="signup">ایجاد حساب کاربری</string>
     <string name="email">پست الکترونیک</string>
@@ -13,7 +18,7 @@
     <string name="signupLink">ثبت نام کن</string>
 
     <string name="action_sign_in">ورود</string>
-    <string name="action_sign_up">ٍثبت نام</string>
+    <string name="action_sign_up">ثبت نام</string>
     <string name="action_retrieve">بازیابی</string>
     <string name="action_sign_in_short">ورود</string>
     <string name="error_invalid_email">پست الکترونیک وارد شده نامعتبر است</string>
@@ -24,11 +29,20 @@
     <string name="loginq">حساب کاربری داری؟</string>
     <string name="loginLink">وارد شو</string>
     <string name="login_error">رمزورود وارد شده اشتباه است و یا کاربری با این پست الکترونیک وجود ندارد.</string>
-    <string name="next">بعدی</string>
-    <string name="start">شروع</string>
     <string name="forget">بازیابی رمزورود</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
+    <string name="open">بازکردن</string>
+    <string name="close">بستن</string>
+
+    <!-- Strings related activity_menu -->
+    <string name="massage_learning">آموزش ماساژ</string>
+    <string name="sport_tests">آزمون های ورزشی</string>
+    <string name="sport_plans">برنامه های ورزشی</string>
+    <string name="terminologies">اصلاحات تخصصی در علوم ورزشی</string>
+    <string name="food_plans">برنامه های غذایی</string>
+    <string name="profile">پرونده تخصصی</string>
+    <string name="body_building_learnings">آموزش حرکات بدنسازی</string>
+    <string name="talent_detecting">استعدادیابی</string>
+
 
 
 </resources>

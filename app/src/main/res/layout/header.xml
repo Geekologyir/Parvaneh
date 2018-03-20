@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@drawable/navwall"
+    android:background="@color/link"
     android:backgroundTint="@color/darkgray"
     android:backgroundTintMode="multiply"
 

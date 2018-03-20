@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo" />
 
-    <ScrollView
+    <RelativeLayout
         android:id="@+id/signup_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
