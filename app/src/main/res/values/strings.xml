@@ -13,7 +13,7 @@
     <string name="email">پست الکترونیک</string>
     <string name="password">رمز ورود</string>
     <string name="password_confirm">تکرار رمز ورود</string>
-    <string name="forgetLink">رمزت را فراموش کرده ای؟</string>
+    <string name="forgetLink">رمزت رو فراموش کردی؟</string>
     <string name="signupQ">حساب کاربری نداری؟ </string>
     <string name="signupLink">ثبت نام کن</string>
 

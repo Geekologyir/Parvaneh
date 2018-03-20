@@ -28,6 +28,7 @@
                     android:orientation="vertical">
 
                 </RelativeLayout>
+
             </ScrollView>
         </android.support.design.widget.NavigationView>
     <RelativeLayout
@@ -35,10 +36,12 @@
         android:layout_height="match_parent">
         <include layout="@layout/toolbar"
             android:id="@+id/my_toolbar"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/my_toolbar">
+            android:layout_below="@id/my_toolbar"
+            android:paddingLeft="5dp">
 
             <GridLayout
                 android:id="@+id/menuGrid"
@@ -46,16 +49,19 @@
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:columnCount="2">
 
                 <RelativeLayout
                     android:id="@+id/massage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/massageicon"
@@ -74,39 +80,14 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/sptest"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
-                    android:elevation="1dp"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/sptesticon"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
-                        android:src="@mipmap/clipboard" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/sptesticon"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/sport_tests" />
-                </RelativeLayout>
-
-                <RelativeLayout
                     android:id="@+id/spplan"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/spplanicon"
@@ -126,13 +107,43 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/sptest"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
+                    android:elevation="1dp"
+                    android:padding="10dp"
+                    android:translationZ="5dp">
+
+                    <ImageView
+                        android:id="@+id/sptesticon"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="-20dp"
+                        android:src="@mipmap/clipboard" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sptesticon"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/sport_tests" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/terminology"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/terminologyicon"
@@ -156,10 +167,11 @@
                     android:id="@+id/fdplan"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/fdplanicon"
@@ -182,10 +194,11 @@
                     android:id="@+id/document"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/documenticon"
@@ -208,10 +221,11 @@
                     android:id="@+id/bodybld"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/bodybldicon"
@@ -234,10 +248,11 @@
                     android:id="@+id/talent"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/menu_item_bg"
                     android:elevation="1dp"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:translationZ="5dp">
 
                     <ImageView
                         android:id="@+id/talenticon"

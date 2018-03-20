@@ -2,8 +2,6 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -15,20 +13,11 @@ import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.widget.Button;
-import android.support.v7.widget.Toolbar;
 import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -60,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer);
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
@@ -148,8 +137,8 @@ public class MenuActivity extends AppCompatActivity {
         ViewGroup.LayoutParams params;
         for (RelativeLayout btn:btns) {
             params = btn.getLayoutParams();
-            params.width = (deviceWidth / 2) - 20;
-            params.height = (deviceWidth / 2) - 20;
+            params.width = (deviceWidth / 2) - 90;
+            params.height = (deviceWidth / 2) - 90;
             btn.setLayoutParams(params);
 
         }
@@ -162,13 +151,8 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (!mDrawerLayout.isDrawerOpen(GravityCompat.END)){
                     mDrawerLayout.openDrawer(GravityCompat.END);
                     return true;
-                }else{
-                    mDrawerLayout.closeDrawer(GravityCompat.END);
-                    return true;
-                }
         }
         return super.onOptionsItemSelected(item);
     }

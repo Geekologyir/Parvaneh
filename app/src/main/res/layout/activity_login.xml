@@ -67,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/textinputbg">
+                android:background="@drawable/textinputbg"
+                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/password"
@@ -78,9 +79,6 @@
                     android:layout_marginTop="90dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -138,7 +136,6 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
         android:background="#99000000"
         android:padding="100dp"
         android:visibility="gone" />
