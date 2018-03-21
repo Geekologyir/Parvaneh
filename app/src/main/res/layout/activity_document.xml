@@ -47,16 +47,16 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_below="@id/my_toolbar"
-           android:layout_marginTop="50dp"
-            android:layout_margin="10dp"
+           android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/block_bg"
-            android:elevation="2dp"
-            >
+            android:elevation="2dp">
 
             <RelativeLayout
                 android:id="@+id/per_item_header"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:padding="15dp">
              <TextView
                 android:id="@+id/changPersonalInfo"
@@ -64,8 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/txtpersonalinfo"
                 android:layout_alignParentStart="true"
-                android:text="TextView"
-                tools:text="@string/chang"
+                android:text="@string/chang"
                  android:layout_alignParentLeft="true"
                  android:textSize="16sp"
                  android:textStyle="bold"
@@ -80,9 +79,9 @@
                  android:textSize="16sp"
                  android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="TextView"
-                tools:text="اطلاعات شخصی"
-                android:layout_marginRight="20dp" />
+                android:text="اطلاعات شخصی"
+                android:layout_marginRight="20dp"
+                 android:textColor="@color/dark"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -103,7 +102,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="100dp"
                     android:background="@drawable/textinputbg"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="25dp">
 
                     <EditText
                         android:id="@+id/Fname"
@@ -127,7 +127,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="200dp"
                     android:background="@drawable/textinputbg"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginLeft="25dp">
 
                     <EditText
                         android:id="@+id/Lname"
@@ -150,11 +151,12 @@
         <!-- corporeal information -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="420dp"
             android:id="@+id/relativecorporeallInfo"
             android:layout_below="@id/relativePersonalInfo"
-            android:layout_marginTop="50dp"
-            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/block_bg"
             android:elevation="2dp">
 
@@ -162,7 +164,7 @@
             <RelativeLayout
                 android:id="@+id/cor_item_header"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:padding="15dp">
                 <TextView
                     android:id="@+id/changcorporealInfo"
@@ -170,8 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/txtcorporealInfo"
                     android:layout_alignParentStart="true"
-                    android:text="TextView"
-                    tools:text="@string/chang"
+                    android:text="@string/chang"
                     android:layout_alignParentLeft="true"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -186,9 +187,9 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_weight="1"
-                    android:text="TextView"
-                    tools:text="اطلاعات جسمی"
-                    android:layout_marginRight="20dp" />
+                    android:text="اطلاعات جسمی"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/dark"/>
             </RelativeLayout>
 
 
@@ -210,7 +211,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:background="@drawable/textinputbg"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp">
 
                 <EditText
                     android:id="@+id/size"
@@ -234,7 +236,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="200dp"
                 android:background="@drawable/textinputbg"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp">
 
                 <EditText
                     android:id="@+id/weight"
@@ -257,7 +260,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="300dp"
                 android:background="@drawable/textinputbg"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp">
 
                 <EditText
                     android:id="@+id/place"
