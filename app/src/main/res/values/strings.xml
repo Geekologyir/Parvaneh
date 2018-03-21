@@ -48,5 +48,10 @@
     <string name="activity_new_sportplan_title">برنامه ورزشی جدید</string>
     <string name="new_sp_time_hint">چه زمانی این ورزش شروع میشه؟</string>
 
-
+    <string name="name">نام</string>
+    <string name="Lname">نام خانوادگی</string>
+    <string name="chang">تغییر</string>
+    <string name="size">قد</string>
+    <string name="weight">وزن</string>
+    <string name="place">مکان</string>
 </resources>
