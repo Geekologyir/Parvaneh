@@ -11,7 +11,7 @@ public class CalligraphyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/behdad.ttf")
+                .setDefaultFontPath("fonts/iransans.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

@@ -3,9 +3,10 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#5856d6</color>
-    <color name="primary">#795548</color>
-    <color name="primarydark">#5D4037</color>
+    <color name="layoutBackground">#f8faff</color>
     <color name="white">#ffffff</color>
     <color name="darkgray">#6c6c6c</color>
     <color name="link">#ff2a68</color>
+    <color name="blue_grey">#6d819c</color>
+    <color name="divider">#e9e9e9</color>
 </resources>

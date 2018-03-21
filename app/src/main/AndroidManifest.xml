@@ -24,7 +24,7 @@
         <activity android:name=".IntroActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".documentActivity" />
-        <activity android:name=".SportPlanActivity" />
+        <activity android:name=".SportPlansActivity" />
         <activity android:name=".FoodPlanActivity" />
         <activity android:name=".AbilityActivity" />
         <activity android:name=".SportTestActivity" />
@@ -35,7 +35,8 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".ForgetActivity"></activity>
+        <activity android:name=".ForgetActivity" />
+        <activity android:name=".NewSportPlanActivity"></activity>
     </application>
 
 </manifest>

@@ -28,7 +28,8 @@ public class SplashActivity extends Activity {
             public void run() {
                 finish();
                 ///IntroActivity : the activity that runs after a few seconds
-                startActivity(new Intent(SplashActivity.this, IntroActivity.class));
+                //startActivity(new Intent(SplashActivity.this, IntroActivity.class));
+                startActivity(new Intent(SplashActivity.this, MenuActivity.class));
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         }, 1500); // time based on ms

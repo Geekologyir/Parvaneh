@@ -3,7 +3,7 @@
     android:id="@+id/loginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/layoutBackground"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="ir.geek.parvaneh.LoginActivity">
@@ -52,7 +52,7 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
+                    android:background="@null"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"

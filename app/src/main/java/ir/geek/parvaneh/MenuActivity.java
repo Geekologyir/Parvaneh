@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,15 +43,15 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         setTitle("");
 
-        Toolbar toolbar=(Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        TextView title = (TextView) findViewById(R.id.toolbar_title);
+        title.setText(getString(R.string.activity_menu_title));
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer);
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
         mDrawerLayout.addDrawerListener(mToogle);
@@ -70,7 +71,7 @@ public class MenuActivity extends AppCompatActivity {
         spplan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,SportPlanActivity.class));
+                startActivity(new Intent(MenuActivity.this,SportPlansActivity.class));
             }
         });
 

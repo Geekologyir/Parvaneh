@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <android.support.v4.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/drawer"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.geek.parvaneh.MenuActivity">
+    <android.support.design.widget.NavigationView
+        android:layout_width="250dp"
         android:layout_height="match_parent"
-        tools:context="ir.geek.parvaneh.MenuActivity">
-        <android.support.design.widget.NavigationView
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:background="#f0f0f0"
-            app:headerLayout="@layout/header"
-            app:itemIconTint="@color/darkgray"
-            app:itemTextColor="@color/darkgray"
-            app:menu="@menu/drawermenu"
-            android:layoutDirection="rtl">
+        android:layout_gravity="end"
+        android:background="#f0f0f0"
+        app:headerLayout="@layout/header"
+        app:itemIconTint="@color/darkgray"
+        app:itemTextColor="@color/darkgray"
+        app:menu="@menu/drawermenu"
+        android:layoutDirection="rtl">
 
-            <ScrollView
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            </RelativeLayout>
 
-                </RelativeLayout>
-
-            </ScrollView>
-        </android.support.design.widget.NavigationView>
+        </ScrollView>
+    </android.support.design.widget.NavigationView>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include layout="@layout/toolbar"
-            android:id="@+id/my_toolbar"/>
+        android:layout_height="match_parent"
+        android:background="@color/layoutBackground">
+
+        <include
+            android:id="@+id/my_toolbar"
+            layout="@layout/toolbar" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -58,7 +61,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -81,10 +84,12 @@
 
                 <RelativeLayout
                     android:id="@+id/spplan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/my_toolbar"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -105,13 +110,12 @@
                         android:layout_marginTop="10dp"
                         android:text="@string/sport_plans" />
                 </RelativeLayout>
-
                 <RelativeLayout
                     android:id="@+id/sptest"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -140,7 +144,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -168,7 +172,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -195,7 +199,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -222,7 +226,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">
@@ -249,7 +253,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/menu_item_bg"
+                    android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
                     android:translationZ="5dp">

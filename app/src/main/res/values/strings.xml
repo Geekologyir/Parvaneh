@@ -34,15 +34,19 @@
     <string name="close">بستن</string>
 
     <!-- Strings related activity_menu -->
+    <string name="activity_menu_title">بخش های برنامه</string>
     <string name="massage_learning">آموزش ماساژ</string>
     <string name="sport_tests">آزمون های ورزشی</string>
     <string name="sport_plans">برنامه های ورزشی</string>
-    <string name="terminologies">اصلاحات تخصصی در علوم ورزشی</string>
+    <string name="terminologies">اصطلاحات تخصصی ورزشی</string>
     <string name="food_plans">برنامه های غذایی</string>
     <string name="profile">پرونده تخصصی</string>
     <string name="body_building_learnings">آموزش حرکات بدنسازی</string>
     <string name="talent_detecting">استعدادیابی</string>
-
+    <string name="activity_sportplans_title">برنامه های ورزشی</string>
+    <string name="edit">ویرایش</string>
+    <string name="activity_new_sportplan_title">برنامه ورزشی جدید</string>
+    <string name="new_sp_time_hint">چه زمانی این ورزش شروع میشه؟</string>
 
 
 </resources>
