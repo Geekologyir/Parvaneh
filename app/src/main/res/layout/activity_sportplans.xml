@@ -7,30 +7,7 @@
     android:layout_height="match_parent"
     tools:context="ir.geek.parvaneh.NewSportPlanActivity">
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:background="#f0f0f0"
-        android:layoutDirection="rtl"
-        app:headerLayout="@layout/header"
-        app:itemIconTint="@color/darkgray"
-        app:itemTextColor="@color/darkgray"
-        app:menu="@menu/drawermenu">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </RelativeLayout>
-
-        </ScrollView>
-    </android.support.design.widget.NavigationView>
+    <include layout="@layout/navigation_view"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -53,7 +30,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/my_toolbar"
             android:layout_margin="10dp"
-            android:background="@null">
+            android:background="@null"
+            android:clickable="false">
 
         </ListView>
 

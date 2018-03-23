@@ -7,30 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ir.geek.parvaneh.MenuActivity">
-    <android.support.design.widget.NavigationView
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:background="#f0f0f0"
-        app:headerLayout="@layout/header"
-        app:itemIconTint="@color/darkgray"
-        app:itemTextColor="@color/darkgray"
-        app:menu="@menu/drawermenu"
-        android:layoutDirection="rtl">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </RelativeLayout>
-
-        </ScrollView>
-    </android.support.design.widget.NavigationView>
+    <include
+        layout="@layout/navigation_view"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,18 +30,20 @@
             <GridLayout
                 android:id="@+id/menuGrid"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:columnCount="2">
 
                 <RelativeLayout
                     android:id="@+id/massage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -70,7 +53,8 @@
                         android:id="@+id/massageicon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
                         android:src="@mipmap/waist" />
 
                     <TextView
@@ -88,7 +72,9 @@
                     android:layout_height="150dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/my_toolbar"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -110,11 +96,14 @@
                         android:layout_marginTop="10dp"
                         android:text="@string/sport_plans" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/sptest"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -143,7 +132,9 @@
                     android:layout_height="150dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -171,7 +162,9 @@
                     android:id="@+id/fdplan"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -183,7 +176,7 @@
                         android:layout_height="64dp"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="-20dp"
-                        android:src="@mipmap/weigher" />
+                        android:src="@mipmap/fish" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -198,7 +191,9 @@
                     android:id="@+id/document"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -225,7 +220,9 @@
                     android:id="@+id/bodybld"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"
@@ -252,7 +249,9 @@
                     android:id="@+id/talent"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
                     android:padding="10dp"

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Parvaneh</string>
     <string name="title_activity_login">ورود</string>
+    <string name="today">امروز</string>
+    <string name="tommorrow">فردا</string>
+    <string name="edit">ویرایش</string>
 
     <!-- Strings related activity_intro -->
     <string name="next">بعدی</string>
@@ -44,14 +47,21 @@
     <string name="body_building_learnings">آموزش حرکات بدنسازی</string>
     <string name="talent_detecting">استعدادیابی</string>
     <string name="activity_sportplans_title">برنامه های ورزشی</string>
-    <string name="edit">ویرایش</string>
+
+    <!-- Strings related activity_new_sportplan -->
     <string name="activity_new_sportplan_title">برنامه ورزشی جدید</string>
     <string name="new_sp_time_hint">چه زمانی این ورزش شروع میشه؟</string>
+    <string name="tag_field_title">تگ رنگی</string>
 
+    <!-- Strings related activity_profile -->
     <string name="name">نام</string>
     <string name="Lname">نام خانوادگی</string>
     <string name="chang">تغییر</string>
     <string name="size">قد</string>
     <string name="weight">وزن</string>
     <string name="place">مکان</string>
+
+    <!-- Strings related activity_terminology -->
+    <string name="activity_terminology_title">اصطلاحات تخصصی</string>
+    <string name="search_hint">جستجو...</string>
 </resources>

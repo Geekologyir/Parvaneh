@@ -37,7 +37,8 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".ForgetActivity" />
         <activity android:name=".NewSportPlanActivity" />
-        <activity android:name=".Chang_Document"></activity>
+        <activity android:name=".Chang_Document" />
+        <activity android:name=".TerminologyItemActivity"></activity>
     </application>
 
 </manifest>

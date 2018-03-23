@@ -31,11 +31,8 @@ public class SportPlansActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sportplans);
 
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
-        setTitle("");
-        title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(getText(R.string.activity_sportplans_title));
         changeActionBar(getString(R.string.activity_sportplans_title));
+
         spList = (ListView) findViewById(R.id.spList);
         spList.setAdapter(new SpListAdapter(this,android.R.layout.simple_list_item_1,
                 R.id.sp_item_subject,
@@ -86,11 +83,10 @@ public class SportPlansActivity extends AppCompatActivity {
         setTitle("");
         title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(titleText);
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
         mDrawerLayout.addDrawerListener(mToogle);
     }

@@ -21,7 +21,7 @@
     android:layout_width="@dimen/mdtp_date_picker_component_width"
     android:layout_height="@dimen/mdtp_selected_date_height"
     android:layout_weight="1"
-    android:background="@color/mdtp_accent_color"
+    android:background="@drawable/dialog_gradient_bg"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -32,7 +32,7 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:orientation="vertical"
-        android:textColor="@color/mdtp_date_picker_selector" >
+        android:textColor="@color/mdtp_date_picker_selector">
 
         <TextView
             android:id="@+id/date_picker_month"
@@ -43,7 +43,7 @@
             android:includeFontPadding="false"
             android:textColor="@color/mdtp_date_picker_selector"
             android:textSize="@dimen/mdtp_selected_date_month_size"
-            tools:text="May"/>
+            tools:text="May" />
 
         <TextView
             android:id="@+id/date_picker_day"
@@ -57,7 +57,7 @@
             android:includeFontPadding="false"
             android:textColor="@color/mdtp_date_picker_selector"
             android:textSize="@dimen/mdtp_selected_date_day_size"
-            tools:text="15"/>
+            tools:text="15" />
     </com.mohamadamin.persianmaterialdatetimepicker.AccessibleLinearLayout>
 
     <com.mohamadamin.persianmaterialdatetimepicker.AccessibleTextView

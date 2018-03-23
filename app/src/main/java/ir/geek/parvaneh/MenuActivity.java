@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,14 +135,14 @@ public class MenuActivity extends AppCompatActivity {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int deviceWidth = displayMetrics.widthPixels ;
+        int deviceWidth = dpFromPx(MenuActivity.this,displayMetrics.widthPixels);
         ViewGroup.LayoutParams params;
         for (RelativeLayout btn:btns) {
             params = btn.getLayoutParams();
-            params.width = (deviceWidth / 2) - 90;
-            params.height = (deviceWidth / 2) - 90;
+            params.width = pxFromDp(MenuActivity.this, ((deviceWidth-40)/2)-18);
+            params.height = pxFromDp(MenuActivity.this, ((deviceWidth-40)/2)-18);
             btn.setLayoutParams(params);
-
+            Toast.makeText(this,pxFromDp(MenuActivity.this, deviceWidth/2)+"",Toast.LENGTH_SHORT).show();
         }
     }
     @Override
@@ -157,5 +158,10 @@ public class MenuActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    public static int dpFromPx(final Context context, final int px) {
+        return (int) (px / context.getResources().getDisplayMetrics().density);
+    }
+    public static int pxFromDp(final Context context, final int dp) {
+        return (int) (dp * context.getResources().getDisplayMetrics().density);
+    }
 }
