@@ -111,7 +111,6 @@ public class NewSportPlanActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
                         int diffrentDate = dayOfMonth - persianCalendar.getPersianDay();
-                        Toast.makeText(NewSportPlanActivity.this,persianCalendar.getPersianDay() + " - " + dayOfMonth + " = " + diffrentDate,Toast.LENGTH_LONG).show();
                         if(persianCalendar.getPersianYear() == year && persianCalendar.getPersianMonth() == monthOfYear && diffrentDate < 2 && diffrentDate >=0) {
                             if (diffrentDate == 0){
                                 dateInput = getString(R.string.today);

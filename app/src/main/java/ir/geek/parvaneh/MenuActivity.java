@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +63,7 @@ public class MenuActivity extends AppCompatActivity {
         document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,documentActivity.class));
+                startActivity(new Intent(MenuActivity.this,ProfileActivity.class));
             }
         });
         spplan=(RelativeLayout)findViewById(R.id.spplan);
@@ -142,7 +141,6 @@ public class MenuActivity extends AppCompatActivity {
             params.width = pxFromDp(MenuActivity.this, ((deviceWidth-40)/2)-18);
             params.height = pxFromDp(MenuActivity.this, ((deviceWidth-40)/2)-18);
             btn.setLayoutParams(params);
-            Toast.makeText(this,pxFromDp(MenuActivity.this, deviceWidth/2)+"",Toast.LENGTH_SHORT).show();
         }
     }
     @Override

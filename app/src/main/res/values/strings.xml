@@ -57,11 +57,15 @@
     <string name="name">نام</string>
     <string name="Lname">نام خانوادگی</string>
     <string name="chang">تغییر</string>
-    <string name="size">قد</string>
+    <string name="height">قد</string>
     <string name="weight">وزن</string>
-    <string name="place">مکان</string>
+    <string name="city">شهر</string>
 
     <!-- Strings related activity_terminology -->
     <string name="activity_terminology_title">اصطلاحات تخصصی</string>
     <string name="search_hint">جستجو...</string>
+    <string name="corporeal_info_block_title">اطلاعات جسمی</string>
+    <string name="dob">تاریخ تولد</string>
+    <string name="profile_title">اطلاعات فردی</string>
+    <string name="done">تایید</string>
 </resources>
