@@ -68,4 +68,6 @@
     <string name="dob">تاریخ تولد</string>
     <string name="profile_title">اطلاعات فردی</string>
     <string name="done">تایید</string>
+    <string name="new_sp_finish_time_hint">چه زمانی این ورزش تموم میشه؟</string>
+    <string name="remove">حذف</string>
 </resources>

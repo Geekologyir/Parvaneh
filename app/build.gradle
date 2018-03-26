@@ -29,5 +29,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation ('com.github.woxthebox:draglistview:1.5.4') {
+        exclude group: 'com.android.support'
+    }
+
     implementation project(':persianmaterialdatetimepicker')
 }

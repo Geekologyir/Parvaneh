@@ -3,7 +3,6 @@
     android:layout_height="200dp"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    xmlns:android="http://schemas.android.com/apk/res/android" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -42,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/sp_item_header"
-            android:background="@color/divider" />
+            android:background="@color/grey" />
 
         <RelativeLayout
             android:id="@+id/sp_item_body"
@@ -53,20 +52,10 @@
             android:layout_below="@id/divider"
             android:padding="15dp">
 
-            <ImageView
-                android:id="@+id/sp_item_color"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/circle_magenta" />
-
             <TextView
                 android:id="@+id/sp_item_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_toEndOf="@id/sp_item_color"
                 android:text="امروز، ساعت ۱۷"
                 android:textColor="@color/blue_grey"
                 android:textSize="16sp" />

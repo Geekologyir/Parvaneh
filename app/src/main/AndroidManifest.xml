@@ -26,7 +26,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SportPlansActivity" />
         <activity android:name=".FoodPlanActivity" />
-        <activity android:name=".AbilityActivity" />
         <activity android:name=".SportTestActivity" />
         <activity android:name=".TerminologyActivity" />
         <activity android:name=".MassageActivity" />

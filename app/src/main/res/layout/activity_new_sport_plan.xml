@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ir.geek.parvaneh.NewSportPlanActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/layoutBackground"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    tools:context="ir.geek.parvaneh.NewSportPlanActivity">
 
     <include
         android:id="@+id/my_toolbar"
         layout="@layout/toolbar" />
 
     <RelativeLayout
+        android:id="@+id/plan_info"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/my_toolbar"
         android:layout_margin="10dp"
         android:background="@drawable/block_bg"
@@ -53,79 +54,133 @@
                 android:src="@drawable/ic_date" />
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tag_field_title"
-            android:layout_width="wrap_content"
+        <GridLayout
+            android:id="@+id/times"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/time_input_block"
-            android:layout_marginTop="10dp"
-            android:text="@string/tag_field_title"
-            android:textSize="20sp" />
+            android:numColumns="4">
 
-        <RadioGroup
-            android:id="@+id/color_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_below="@id/tag_field_title"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <ir.geek.parvaneh.squareLayout
+                android:id="@+id/btn1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:layout_marginRight="0dp"
+                android:padding="0dp">
 
-            <RadioButton
-                android:id="@+id/blue_tag"
+                <Button
+                    android:id="@+id/times_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/textinputbg"
+                    android:text="یکبار"
+                    android:textColor="@color/grey" />
+            </ir.geek.parvaneh.squareLayout>
+
+            <ir.geek.parvaneh.squareLayout
+                android:id="@+id/btn2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:padding="0dp">
+
+                <Button
+                    android:id="@+id/times_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/textinputbg"
+                    android:text="هر روز"
+                    android:textColor="@color/grey" />
+            </ir.geek.parvaneh.squareLayout>
+
+            <ir.geek.parvaneh.squareLayout
+                android:id="@+id/btn3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:padding="0dp">
+
+                <Button
+                    android:id="@+id/times_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/textinputbg"
+                    android:singleLine="true"
+                    android:text="هر دو روز"
+                    android:textColor="@color/grey" />
+            </ir.geek.parvaneh.squareLayout>
+
+            <ir.geek.parvaneh.squareLayout
+                android:id="@+id/btn4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="0dp"
+                android:padding="0dp">
+
+                <Button
+                    android:id="@+id/times_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/textinputbg"
+                    android:text="انتخابی"
+                    android:textColor="@color/grey" />
+            </ir.geek.parvaneh.squareLayout>
+        </GridLayout>
+
+        <RelativeLayout
+            android:id="@+id/finish_time_input_block"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/times"
+            android:background="@drawable/textinputbg"
+            android:visibility="gone">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/finish_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/new_sp_finish_time_hint"
+                    android:layoutDirection="rtl"
+                    android:singleLine="true"
+                    android:textIsSelectable="false" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/new_sp_datepicker_btn2"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_darkblue"
-                android:button="@null"
-                android:checked="true" />
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_date" />
+        </RelativeLayout>
 
-            <RadioButton
-                android:id="@+id/red_tag"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_red"
-                android:button="@null" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/plan_info"
+        android:background="@drawable/block_bg"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <FrameLayout
+            android:id="@+id/drag_list_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <RadioButton
-                android:id="@+id/magenta_tag"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_magenta"
-                android:button="@null" />
-
-            <RadioButton
-                android:id="@+id/cyan_tag"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_cyan"
-                android:button="@null" />
-
-            <RadioButton
-                android:id="@+id/purple_tag"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_purple"
-                android:button="@null" />
-
-            <RadioButton
-                android:id="@+id/orange_tag"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_orange"
-                android:button="@null" />
-
-            <RadioButton
-                android:id="@+id/green_tag"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@drawable/circle_green"
-                android:button="@null" />
-        </RadioGroup>
+        </FrameLayout>
     </RelativeLayout>
 </RelativeLayout>

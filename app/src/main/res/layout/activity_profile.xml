@@ -72,7 +72,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@id/personal_info_header"
                         android:alpha="0.5"
-                        android:background="@color/divider" />
+                        android:background="@color/grey" />
 
 
                     <android.support.design.widget.TextInputLayout
@@ -231,7 +231,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@id/cor_info_header"
                         android:alpha="0.5"
-                        android:background="@color/divider" />
+                        android:background="@color/grey" />
 
 
                     <android.support.design.widget.TextInputLayout
