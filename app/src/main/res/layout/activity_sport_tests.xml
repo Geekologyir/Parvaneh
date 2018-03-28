@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer"
+    tools:context="ir.geek.parvaneh.SportTestsActivity">
+
+    <include
+        layout="@layout/navigation_view"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mdtp_background_color"
+        android:layoutDirection="rtl">
+
+        <include
+            android:id="@+id/my_toolbar"
+            layout="@layout/toolbar"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:columnCount="2"
+            android:padding="5dp"
+            android:layout_below="@id/my_toolbar">
+
+            <ir.geek.parvaneh.squareLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:background="#000000">
+
+                <ImageView
+                    android:id="@+id/swim_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:alpha="0.7"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/swim_bg" />
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تست شنا"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="25dp"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="20dp"/>
+            </ir.geek.parvaneh.squareLayout>
+
+            <ir.geek.parvaneh.squareLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:background="#000000">
+
+                <ImageView
+                    android:id="@+id/running_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:alpha="0.7"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/running_bg" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تست دو"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="25dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginBottom="20dp"/>
+            </ir.geek.parvaneh.squareLayout>
+
+            <ir.geek.parvaneh.squareLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:background="#000000">
+
+                <ImageView
+                    android:id="@+id/aerobic_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:alpha="0.7"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aerobic_bg" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تست هوازی"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="25dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginBottom="20dp"/>
+
+            </ir.geek.parvaneh.squareLayout>
+
+
+        </GridLayout>
+
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

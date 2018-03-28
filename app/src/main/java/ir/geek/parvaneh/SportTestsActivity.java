@@ -14,35 +14,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class SportTestActivity extends AppCompatActivity {
-    TextView txt1;
-    TextView txtdescription;
-    TextView txttest;
-    TextView txtvideotime;
-    VideoView video;
+public class SportTestsActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     Context context;
+    ImageView swim_bg;
+    ImageView running_bg;
+    ImageView aerobic_bg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sport_test);
-    }
+        setContentView(R.layout.activity_sport_tests);
 
+        initializeViews();
+        changeActionBar(getString(R.string.activity_sporttests_title));
+        handleClicks();
+    }
     private void initializeViews(){
-        txt1=(TextView)findViewById(R.id.txt1);
-        txtdescription=(TextView)findViewById(R.id.txtdescription);
-        txttest=(TextView)findViewById(R.id.txttest);
-        txtvideotime=(TextView)findViewById(R.id.txtvideotime);
-        video=(VideoView)findViewById(R.id.video);
         context = getApplicationContext();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        swim_bg=(ImageView)findViewById(R.id.swim_bg);
+        running_bg=(ImageView)findViewById(R.id.running_bg);
+        aerobic_bg=(ImageView)findViewById(R.id.aerobic_bg);
     }
-
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
@@ -71,7 +68,7 @@ public class SportTestActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SportTestActivity.this, SportTestsActivity.class));
+                startActivity(new Intent(SportTestsActivity.this, MenuActivity.class));
             }
         });
 
@@ -86,4 +83,28 @@ public class SportTestActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void handleClicks() {
+
+        swim_bg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SportTestsActivity.this,SportTestActivity.class));
+            }
+        });
+        running_bg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SportTestsActivity.this,SportTestActivity.class));
+            }
+        });
+        aerobic_bg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SportTestsActivity.this,SportTestActivity.class));
+            }
+        });
+
+    }
+
 }

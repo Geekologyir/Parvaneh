@@ -98,7 +98,7 @@ public class MenuActivity extends AppCompatActivity {
         sptest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,SportTestActivity.class));
+                startActivity(new Intent(MenuActivity.this,SportTestsActivity.class));
             }
         });
 
