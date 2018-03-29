@@ -13,8 +13,10 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.VideoView;
+import android.widget.MediaController;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -27,10 +29,13 @@ public class SportTestActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_test);
+        initializeViews();
+        changeActionBar(getString(R.string.activity_sporttests_title));
     }
 
     private void initializeViews(){
@@ -41,6 +46,12 @@ public class SportTestActivity extends AppCompatActivity {
         video=(VideoView)findViewById(R.id.video);
         context = getApplicationContext();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+
+        video.setVideoPath("android.resource://"+ getPackageName()+"/"+R.raw.video1);
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(video);
+        video.setMediaController(mediaController);
+        video.start();
     }
 
     protected void attachBaseContext(Context newBase) {

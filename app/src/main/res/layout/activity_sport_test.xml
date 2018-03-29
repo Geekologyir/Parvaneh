@@ -20,7 +20,7 @@
 
     <include
         android:id="@+id/my_toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar" />
 
         <TextView
             android:id="@+id/txttest"
@@ -37,36 +37,36 @@
             android:id="@+id/relvideo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_below="@id/txttest">
             
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_description"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="10dp"/>
 
             <TextView
                 android:id="@+id/txt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:layout_marginRight="35dp"
                 android:text="آسان"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_timer"
-                android:layout_marginRight="100dp"/>
+                android:layout_marginRight="85dp"/>
 
             <TextView
                 android:id="@+id/txtvideotime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="130dp"
+                android:layout_marginRight="110dp"
                 android:text="120 دقیقه"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
 
         </RelativeLayout>
@@ -74,17 +74,18 @@
         <VideoView
             android:id="@+id/video"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/relvideo"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/txtdescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/video"
-            android:text="تمرین های هوزای ایروبیک"
-            android:textSize="25dp" />
+            android:text="تمرین هوازی (ایروبیک) (به انگلیسی: Aerobic exercise) نوعی فعالیت ورزشی بوده که هدف آن بهبود سیستم مصرف اکسیژن می‌باشد. هوازی ترجمه واژه ایروبیک (Aerobic) می‌باشد که به معنی با اکسیژن بوده و به نیاز به اکسیژن در سوخت و ساز بدن و فرایند تولید انرژی اشاره دارد. تمرین‌های هوازی بسیاری وجود دارند که با شدتی ملایم و بصورت مداوم انجام می‌شوند."
+            android:textSize="20dp" />
+
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>
