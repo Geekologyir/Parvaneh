@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     EditText fName , lName,city ,dob , height , weight;
     List<EditText> personalFields , corporealFields;
-    TextView editPersonal , editCorporeal;
+    TextView editPersonal , editCorporeal ,edite_show_account;
     private PersianCalendar persianCalendar;
     private String date;
     @Override
@@ -67,6 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
         corporealFields.add(weight);
 
         editPersonal = (TextView) findViewById(R.id.personal_info_block_edit);
+        edite_show_account = (TextView) findViewById(R.id.edite_show_account);
         editCorporeal = (TextView) findViewById(R.id.corporeal_info_edit);
     }
     private void retrieveData(){
@@ -125,6 +126,13 @@ public class ProfileActivity extends AppCompatActivity {
                         startActivity(getIntent());
                     }
                 });
+            }
+        });
+
+        edite_show_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this,InfoAccountActivity.class));
             }
         });
     }

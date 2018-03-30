@@ -286,6 +286,17 @@
 
                     </android.support.design.widget.TextInputLayout>
                 </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/edite_show_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="مشاهده و ویرایش اطلاعات حساب کاربری"
+                    android:layout_below="@+id/corporeal_info_block"
+                    android:layout_margin="10dp"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:textColor="@color/link"/>
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
