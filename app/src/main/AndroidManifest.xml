@@ -39,6 +39,8 @@
         <activity android:name=".TerminologyItemActivity" />
         <activity android:name=".SportTestActivity" />
         <activity android:name=".SportPlanActivity"></activity>
+        <activity android:name=".Edite_passwordActivity"></activity>
+        <activity android:name=".InfoAccountActivity"></activity>
     </application>
 
 </manifest>
