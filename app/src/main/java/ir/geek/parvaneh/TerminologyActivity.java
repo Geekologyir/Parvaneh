@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,8 @@ public class TerminologyActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     EditText searchBox;
     ListView queryList;
+
+    Context context;
 
     String[] words = {"ورزش","هوازی","بدنسازی","ورزش هوازی","ورزش بدنسازی"};
     List<String> queries;
@@ -79,6 +83,7 @@ public class TerminologyActivity extends AppCompatActivity {
         queryList = (ListView) findViewById(R.id.queries);
         queries = new ArrayList<String>();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        context = getApplicationContext();
     }
     private void setAdapterList(List<String> source){
         queryList.setAdapter(new ArrayAdapter<String>(TerminologyActivity.this,
@@ -106,8 +111,22 @@ public class TerminologyActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ActionBarDrawerToggle mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToogle);
+        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+
+        ImageView back = new ImageView(this);
+        android.support.v7.widget.Toolbar.LayoutParams params = new android.support.v7.widget.Toolbar.LayoutParams(44 * (int)context.getResources().getDisplayMetrics().density,44 * (int)context.getResources().getDisplayMetrics().density);
+        params.gravity= Gravity.END;
+        params.leftMargin= 20 * (int)context.getResources().getDisplayMetrics().density;
+        back.setLayoutParams(params);
+        back.setImageDrawable(getDrawable(R.drawable.ic_arrow_back));
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TerminologyActivity.this, MenuActivity.class));
+            }
+        });
+        toolbar.addView(back);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

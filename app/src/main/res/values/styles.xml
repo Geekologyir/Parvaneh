@@ -9,9 +9,14 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:typeface">normal</item>
     </style>
-    <style name="Button1" parent="Widget.AppCompat.Button">
-        <item name="android:background">@mipmap/btn</item>
-        <item name="android:textColor">#FFFFFF</item>
+    <style name="PrimaryBtn" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    <style name="SecondaryBtn" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/light_btn</item>
+        <item name="android:textColor">@color/link</item>
         <item name="android:textSize">20dp</item>
     </style>
 </resources>

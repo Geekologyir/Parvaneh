@@ -37,7 +37,8 @@
         <activity android:name=".ForgetActivity" />
         <activity android:name=".NewSportPlanActivity" />
         <activity android:name=".TerminologyItemActivity" />
-        <activity android:name=".SportTestActivity"></activity>
+        <activity android:name=".SportTestActivity" />
+        <activity android:name=".SportPlanActivity"></activity>
     </application>
 
 </manifest>

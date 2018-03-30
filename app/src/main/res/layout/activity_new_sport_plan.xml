@@ -169,18 +169,52 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/list_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/plan_info"
-        android:background="@drawable/block_bg"
+        android:layout_marginBottom="70dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:background="@drawable/block_bg">
+
         <FrameLayout
             android:id="@+id/drag_list_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:contextClickable="true">
 
         </FrameLayout>
     </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:columnCount="2">
+
+        <Button
+            android:id="@+id/new_sport_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_columnWeight="2"
+            android:layout_marginLeft="10dp"
+            style="@style/PrimaryBtn"
+            android:text="@string/new_sport_btn"/>
+
+        <Button
+            android:id="@+id/new_rest_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_columnWeight="0.001"
+            android:layout_marginRight="10dp"
+            style="@style/PrimaryBtn"
+            android:text="@string/new_rest_btn" />
+
+
+
+    </GridLayout>
 </RelativeLayout>

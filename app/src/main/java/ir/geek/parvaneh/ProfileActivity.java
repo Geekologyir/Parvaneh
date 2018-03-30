@@ -7,9 +7,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +24,7 @@ import java.util.List;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ProfileActivity extends AppCompatActivity {
-
+    Context context;
     EditText fName , lName,city ,dob , height , weight;
     List<EditText> personalFields , corporealFields;
     TextView editPersonal , editCorporeal;
@@ -44,12 +46,28 @@ public class ProfileActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
     private void changeActionBar(String titleText) {
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
         setTitle("");
         TextView title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(titleText);
+
+        ImageView back = new ImageView(this);
+        android.support.v7.widget.Toolbar.LayoutParams params = new android.support.v7.widget.Toolbar.LayoutParams(44 * (int)context.getResources().getDisplayMetrics().density,44 * (int)context.getResources().getDisplayMetrics().density);
+        params.gravity= Gravity.END;
+        params.leftMargin= 20 * (int)context.getResources().getDisplayMetrics().density;
+        back.setLayoutParams(params);
+        back.setImageDrawable(getDrawable(R.drawable.ic_arrow_back));
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, MenuActivity.class));
+            }
+        });
+        toolbar.addView(back);
     }
     private void initializeViews(){
+        context = getApplicationContext();
         personalFields= new ArrayList<EditText>();
         fName = (EditText) findViewById(R.id.Fname_input);
         personalFields.add(fName);
