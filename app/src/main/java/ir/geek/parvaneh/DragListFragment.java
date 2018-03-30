@@ -52,7 +52,7 @@ public class DragListFragment extends Fragment {
 
         mItemArray = new ArrayList<>();
         //ToDo : get ids from db
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 2; i++) {
             mItemArray.add(new Pair<>((long) i, "Item " + i));
         }
 

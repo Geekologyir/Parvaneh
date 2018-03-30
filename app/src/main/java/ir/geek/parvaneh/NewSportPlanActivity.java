@@ -62,7 +62,8 @@ public class NewSportPlanActivity extends AppCompatActivity {
         transaction.replace(R.id.drag_list_container, DragListFragment.newInstance(), "fragment").commit();
     }
     private void changeActionBar(String titleText) {
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
         setTitle("");
         title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(titleText);
@@ -81,11 +82,10 @@ public class NewSportPlanActivity extends AppCompatActivity {
                 finish();
             }
         });
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         toolbar.addView(doneBtn);
 
         ImageView back = new ImageView(this);
-        Toolbar.LayoutParams params2 = new Toolbar.LayoutParams(44 * (int)context.getResources().getDisplayMetrics().density,44 * (int)context.getResources().getDisplayMetrics().density);
+        Toolbar.LayoutParams params2 = new Toolbar.LayoutParams(40 * (int)context.getResources().getDisplayMetrics().density,40 * (int)context.getResources().getDisplayMetrics().density);
         params2.gravity= Gravity.END;
         params2.leftMargin= 20 * (int)context.getResources().getDisplayMetrics().density;
         back.setLayoutParams(params2);
@@ -113,11 +113,19 @@ public class NewSportPlanActivity extends AppCompatActivity {
         timesBtns.add((Button)findViewById(R.id.times_3));
         timesBtns.add((Button)findViewById(R.id.times_4));
 
+        finishTimeLayout = (RelativeLayout) findViewById(R.id.finish_time_input_block);
+
         selectedTimes = timesBtns.get(0); // ToDo : Add condition to get from defined intent parameters for edit mode.
         selectedTimes.setBackground(getDrawable(R.drawable.selecectedtextinputbg));
         selectedTimes.setTextColor(getColor(R.color.colorAccent));
+        if (selectedTimes.getId()==R.id.times_1){
+            finishTimeLayout.setVisibility(View.GONE);
+        } else {
+            finishTimeLayout.setVisibility(View.VISIBLE);
+        }
 
-        finishTimeLayout = (RelativeLayout) findViewById(R.id.finish_time_input_block);
+
+
     }
     private void handleClicks() {
         datePicker.setOnClickListener(new View.OnClickListener() {

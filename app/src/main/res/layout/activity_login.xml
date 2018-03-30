@@ -97,7 +97,7 @@
 
             <Button
                 android:id="@+id/loginBtn"
-                style="@style/Button1"
+                style="@style/PrimaryBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
