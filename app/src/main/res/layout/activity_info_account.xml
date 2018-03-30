@@ -159,7 +159,7 @@
                 </RelativeLayout>
                 
                 <TextView
-                    android:id="@+id/edite_password"
+                    android:id="@+id/edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="تغییر رمز ورود"

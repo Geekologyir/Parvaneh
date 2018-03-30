@@ -84,7 +84,7 @@ public class InfoAccountActivity extends AppCompatActivity {
         accountFields.add(phone);
 
         edite_account = (TextView) findViewById(R.id.edite_account);
-        edite_password = (TextView) findViewById(R.id.edite_password);
+        edite_password = (TextView) findViewById(R.id.edit_password);
 
     }
 
@@ -122,7 +122,7 @@ public class InfoAccountActivity extends AppCompatActivity {
         edite_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(InfoAccountActivity.this,Edite_passwordActivity.class));
+                startActivity(new Intent(InfoAccountActivity.this,EditPasswordActivity.class));
             }
         });
     }

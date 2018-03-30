@@ -30,15 +30,15 @@
         <activity android:name=".TerminologyActivity" />
         <activity android:name=".MassageActivity" />
         <activity android:name=".BodyBuildActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ForgetActivity" />
         <activity android:name=".NewSportPlanActivity" />
         <activity android:name=".TerminologyItemActivity" />
         <activity android:name=".SportTestActivity" />
-        <activity android:name=".SportPlanActivity"></activity>
+        <activity android:name=".SportPlanActivity"/>
+        <activity android:name=".InfoAccountActivity"/>
+        <activity android:name=".EditPasswordActivity"/>
     </application>
 
 </manifest>
