@@ -116,7 +116,7 @@ public class MenuActivity extends AppCompatActivity {
         massage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,MassageActivity.class));
+                startActivity(new Intent(MenuActivity.this,MassagesActivity.class));
             }
         });
 

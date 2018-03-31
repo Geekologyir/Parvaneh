@@ -28,7 +28,7 @@
         <activity android:name=".FoodPlanActivity" />
         <activity android:name=".SportTestsActivity" />
         <activity android:name=".TerminologyActivity" />
-        <activity android:name=".MassageActivity" />
+        <activity android:name=".MassagesActivity" />
         <activity android:name=".BodyBuildActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
@@ -36,9 +36,10 @@
         <activity android:name=".NewSportPlanActivity" />
         <activity android:name=".TerminologyItemActivity" />
         <activity android:name=".SportTestActivity" />
-        <activity android:name=".SportPlanActivity"/>
-        <activity android:name=".InfoAccountActivity"/>
-        <activity android:name=".EditPasswordActivity"/>
+        <activity android:name=".SportPlanActivity" />
+        <activity android:name=".InfoAccountActivity" />
+        <activity android:name=".EditPasswordActivity" />
+        <activity android:name=".MassageActivity"></activity>
     </application>
 
 </manifest>
