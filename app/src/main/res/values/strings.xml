@@ -39,7 +39,7 @@
     <string name="massage_learning">آموزش ماساژ</string>
     <string name="sport_tests">آزمون های ورزشی</string>
     <string name="sport_plans">برنامه های ورزشی</string>
-    <string name="terminologies">اصطلاحات تخصصی ورزشی</string>
+    <string name="terminologies">اصطلاحات تخصصی</string>
     <string name="food_plans">برنامه های غذایی</string>
     <string name="profile">پرونده تخصصی</string>
     <string name="body_building_learnings">آموزش حرکات بدنسازی</string>
@@ -71,4 +71,5 @@
     <string name="new_sport_btn">اضافه کردن ورزش جدید</string>
     <string name="new_rest_btn">استراحت</string>
     <string name="startPlan">شروع برنامه</string>
+    <string name="easy">آسان</string>
 </resources>

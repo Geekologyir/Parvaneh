@@ -12,17 +12,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SportTestsActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     Context context;
-    ImageView swim_bg;
-    ImageView running_bg;
-    ImageView aerobic_bg;
+    GridLayout gridLayout;
+
+    squareLayout swim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,8 @@ public class SportTestsActivity extends AppCompatActivity {
     private void initializeViews(){
         context = getApplicationContext();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        swim_bg=(ImageView)findViewById(R.id.swim_bg);
-        running_bg=(ImageView)findViewById(R.id.running_bg);
-        aerobic_bg=(ImageView)findViewById(R.id.aerobic_bg);
+
+        gridLayout= (GridLayout) findViewById(R.id.items);
     }
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -85,26 +87,19 @@ public class SportTestsActivity extends AppCompatActivity {
     }
 
     private void handleClicks() {
-
-        swim_bg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SportTestsActivity.this,SportTestActivity.class));
-            }
-        });
-        running_bg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SportTestsActivity.this,SportTestActivity.class));
-            }
-        });
-        aerobic_bg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SportTestsActivity.this,SportTestActivity.class));
-            }
-        });
-
+        for(int i=0;i< gridLayout.getChildCount();i++){
+            gridLayout.getChildAt(i).setOnClickListener(itemsClick);
+        }
     }
+    View.OnClickListener itemsClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            squareLayout layout = (squareLayout) view;
+            TextView titleView = (TextView) layout.getChildAt(1);
+            Intent intent = new Intent(SportTestsActivity.this,SportTestActivity.class);
+            intent.putExtra("title", titleView.getText().toString());
+            startActivity(intent);
+        }
+    };
 
 }

@@ -11,7 +11,7 @@
     <include
         layout="@layout/navigation_view"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="189dp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,17 +35,19 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:columnCount="2">
+                android:columnCount="2"
+                android:layoutDirection="rtl">
 
                 <RelativeLayout
                     android:id="@+id/massage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -53,15 +55,15 @@
                         android:id="@+id/massageicon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
+                        android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:src="@mipmap/waist" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/massageicon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/massage_learning" />
                 </RelativeLayout>
@@ -70,13 +72,13 @@
                     android:id="@+id/spplan"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/my_toolbar"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -84,15 +86,14 @@
                         android:id="@+id/spplanicon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/exercisecycle" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/spplanicon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/sport_plans" />
                 </RelativeLayout>
@@ -102,10 +103,11 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -113,15 +115,14 @@
                         android:id="@+id/sptesticon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/clipboard" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/sptesticon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/sport_tests" />
                 </RelativeLayout>
@@ -130,13 +131,12 @@
                     android:id="@+id/terminology"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -144,15 +144,17 @@
                         android:id="@+id/terminologyicon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentTop="false"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="false"
                         android:src="@mipmap/weigher" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/terminologyicon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/terminologies"
                         android:textAlignment="center" />
@@ -163,10 +165,11 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -174,15 +177,14 @@
                         android:id="@+id/fdplanicon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/fish" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/fdplanicon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/food_plans" />
                 </RelativeLayout>
@@ -192,10 +194,11 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -203,15 +206,14 @@
                         android:id="@+id/documenticon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/apple" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/documenticon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/profile" />
                 </RelativeLayout>
@@ -221,10 +223,11 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -232,15 +235,14 @@
                         android:id="@+id/bodybldicon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/handmuscle" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/bodybldicon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/body_building_learnings" />
                 </RelativeLayout>
@@ -250,10 +252,11 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/block_bg"
                     android:elevation="1dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:translationZ="5dp">
 
@@ -261,15 +264,14 @@
                         android:id="@+id/talenticon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-20dp"
+                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/medalion" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/talenticon"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/talent_detecting" />
                 </RelativeLayout>

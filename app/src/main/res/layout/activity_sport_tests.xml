@@ -8,13 +8,12 @@
 
     <include
         layout="@layout/navigation_view"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp" />
+        android:layout_alignParentStart="true"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mdtp_background_color"
+        android:background="@color/layoutBackground"
         android:layoutDirection="rtl">
 
         <include
@@ -27,14 +26,16 @@
             android:layout_margin="10dp"
             android:columnCount="2"
             android:padding="5dp"
-            android:layout_below="@id/my_toolbar">
+            android:layout_below="@id/my_toolbar"
+            android:id="@+id/items">
 
             <ir.geek.parvaneh.squareLayout
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:layout_columnWeight="1"
-                android:layout_margin="5dp"
-                android:background="#000000">
+                android:layout_margin="10dp"
+                android:background="#000000"
+                android:id="@+id/swim">
 
                 <ImageView
                     android:id="@+id/swim_bg"
@@ -44,23 +45,25 @@
                     android:alpha="0.7"
                     android:scaleType="centerCrop"
                     android:src="@drawable/swim_bg" />
+
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="تست شنا"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:textSize="25dp"
-                android:textColor="#ffffff"
-                android:layout_marginBottom="20dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:text="تست شنا"
+                    android:textColor="#ffffff"
+                    android:textSize="25dp" />
             </ir.geek.parvaneh.squareLayout>
 
             <ir.geek.parvaneh.squareLayout
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:layout_columnWeight="1"
-                android:layout_margin="5dp"
-                android:background="#000000">
+                android:layout_margin="10dp"
+                android:background="#000000"
+                android:id="@+id/running">
 
                 <ImageView
                     android:id="@+id/running_bg"
@@ -70,23 +73,25 @@
                     android:alpha="0.7"
                     android:scaleType="centerCrop"
                     android:src="@drawable/running_bg" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="تست دو"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:textSize="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="تست دو"
                     android:textColor="#ffffff"
-                    android:layout_marginBottom="20dp"/>
+                    android:textSize="25dp" />
             </ir.geek.parvaneh.squareLayout>
 
             <ir.geek.parvaneh.squareLayout
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:layout_columnWeight="1"
-                android:layout_margin="5dp"
-                android:background="#000000">
+                android:layout_margin="10dp"
+                android:background="#000000"
+                android:id="@+id/aerobic">
 
                 <ImageView
                     android:id="@+id/aerobic_bg"
@@ -96,15 +101,16 @@
                     android:alpha="0.7"
                     android:scaleType="centerCrop"
                     android:src="@drawable/aerobic_bg" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="تست هوازی"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:textSize="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="تست هوازی"
                     android:textColor="#ffffff"
-                    android:layout_marginBottom="20dp"/>
+                    android:textSize="25dp" />
 
             </ir.geek.parvaneh.squareLayout>
 

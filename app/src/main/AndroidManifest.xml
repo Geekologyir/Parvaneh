@@ -35,7 +35,7 @@
         <activity android:name=".ForgetActivity" />
         <activity android:name=".NewSportPlanActivity" />
         <activity android:name=".TerminologyItemActivity" />
-        <activity android:name=".SportTestActivity" />
+        <activity android:name=".SportTestActivity" android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".SportPlanActivity" />
         <activity android:name=".InfoAccountActivity" />
         <activity android:name=".EditPasswordActivity" />

@@ -1,91 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ir.geek.parvaneh.SportTestsActivity"
-    >
+    android:background="@color/layoutBackground"
+    android:layoutDirection="rtl">
 
-    <include
-        layout="@layout/navigation_view"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/mdtp_background_color"
-        android:layoutDirection="rtl">
 
     <include
         android:id="@+id/my_toolbar"
         layout="@layout/toolbar" />
+    <FrameLayout
+        android:id="@+id/video_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/black"
+        android:layout_below="@id/my_toolbar"
+        android:layoutDirection="ltr">
 
-        <TextView
-            android:id="@+id/txttest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="تست هوازی"
-            android:textSize="35dp"
-            android:textColor="#000000"
-            android:layout_below="@id/my_toolbar"
-            android:padding="5dp"
-            android:layout_marginRight= "10dp"/>
+        <com.universalvideoview.UniversalVideoView
+            android:id="@+id/videoView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            app:uvv_autoRotation="true"
+            app:uvv_fitXY="false" />
 
+        <com.universalvideoview.UniversalMediaController
+            android:id="@+id/media_controller"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:uvv_scalable="true" />
         <RelativeLayout
-            android:id="@+id/relvideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#77000000"
+            android:id="@+id/playOverlay">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_play"/>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/video_layout"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:id="@+id/bottom_layout">
+        <RelativeLayout
+            android:id="@+id/meta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_below="@id/txttest">
-            
+            android:layout_margin="5dp">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/ic_description"
-                android:layout_marginRight="10dp"/>
+                android:id="@+id/diffIcon"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"/>
 
             <TextView
-                android:id="@+id/txt1"
+                android:id="@+id/difficulty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="35dp"
-                android:text="آسان"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/diffIcon"
+                android:text="سطح دشواری"
                 android:textSize="15dp" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/durationIcon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/ic_timer"
-                android:layout_marginRight="85dp"/>
+                android:layout_toLeftOf="@id/difficulty"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"/>
 
             <TextView
-                android:id="@+id/txtvideotime"
+                android:id="@+id/duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="110dp"
-                android:text="120 دقیقه"
+                android:layout_toLeftOf="@id/durationIcon"
+                android:layout_marginRight="5dp"
+                android:text="زمان بر حسب دقیقه"
                 android:textSize="15dp" />
 
 
         </RelativeLayout>
 
-        <VideoView
-            android:id="@+id/video"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/relvideo"
-            android:layout_marginTop="10dp" />
-
         <TextView
-            android:id="@+id/txtdescription"
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/video"
-            android:text="تمرین هوازی (ایروبیک) (به انگلیسی: Aerobic exercise) نوعی فعالیت ورزشی بوده که هدف آن بهبود سیستم مصرف اکسیژن می‌باشد. هوازی ترجمه واژه ایروبیک (Aerobic) می‌باشد که به معنی با اکسیژن بوده و به نیاز به اکسیژن در سوخت و ساز بدن و فرایند تولید انرژی اشاره دارد. تمرین‌های هوازی بسیاری وجود دارند که با شدتی ملایم و بصورت مداوم انجام می‌شوند."
-            android:textSize="20dp" />
+            android:layout_below="@+id/meta"
+            android:text="متن توضیحات"
+            android:textSize="20dp"/>
 
     </RelativeLayout>
-
-</android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

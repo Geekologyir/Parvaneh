@@ -16,19 +16,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    implementation 'com.android.support:design:26.0.0-alpha1'
-    implementation 'com.android.support:design:26.0.0-alpha1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'com.linsea:universalvideoview:1.1.0@aar'
     implementation('com.github.woxthebox:draglistview:1.5.4') {
         exclude group: 'com.android.support'
     }
