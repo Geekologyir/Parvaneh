@@ -10,11 +10,14 @@ import android.widget.RelativeLayout;
 
 public class SplashActivity extends Activity {
     RelativeLayout layout;
-
+    //DataBase Object
+    DatabaseHelper database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Make Activiy Fullscreen
+
+        database =new DatabaseHelper(this);
+        // Make Activity Fullscreen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -29,7 +32,7 @@ public class SplashActivity extends Activity {
                 finish();
                 ///IntroActivity : the activity that runs after a few seconds
                 //startActivity(new Intent(SplashActivity.this, IntroActivity.class));
-                startActivity(new Intent(SplashActivity.this, MenuActivity.class));
+                startActivity(new Intent(SplashActivity.this, SignupActivity.class));
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         }, 1500); // time based on ms
