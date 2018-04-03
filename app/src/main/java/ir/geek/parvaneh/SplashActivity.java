@@ -11,12 +11,12 @@ import android.widget.RelativeLayout;
 public class SplashActivity extends Activity {
     RelativeLayout layout;
     //DataBase Object
-    DatabaseHelper database;
+    DatabaseHelper p_db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        database =new DatabaseHelper(this);
+        p_db =new DatabaseHelper(this);
         // Make Activity Fullscreen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

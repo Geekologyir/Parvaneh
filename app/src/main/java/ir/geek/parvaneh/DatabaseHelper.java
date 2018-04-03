@@ -1,8 +1,14 @@
 package ir.geek.parvaneh;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -21,7 +27,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db =this.getWritableDatabase();
     }
 
     @Override
@@ -33,5 +38,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER);
         onCreate(db);
+    }
+    public boolean signupDB(String email,String password){
+        Log.d("A","AAAAAAAAAAAAAAA");
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(T_USER_EMAIL,email);
+        contentValues.put(T_USER_PASSWORD,password);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+        String date = sdf.format(new Date());
+        contentValues.put(T_USER_REGISTRATIONDATE,date);
+        long result=db.insert(TABLE_USER,null,contentValues);
+        if (result==-1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }
