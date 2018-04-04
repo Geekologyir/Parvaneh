@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class MassagesActivity extends AppCompatActivity {
     ImageView massage1;
     ImageView massage2;
     ImageView massage3;
+    GridLayout gridLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,8 @@ public class MassagesActivity extends AppCompatActivity {
         massage1=(ImageView)findViewById(R.id.massage1);
         massage2=(ImageView)findViewById(R.id.massage2);
         massage3=(ImageView)findViewById(R.id.massage3);
+
+        gridLayout= (GridLayout) findViewById(R.id.items);
     }
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -86,11 +90,10 @@ public class MassagesActivity extends AppCompatActivity {
     }
 
     private void handleClicks() {
-
         massage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent=new Intent(MassagesActivity.this,MassageActivity.class);
+                Intent intent = new Intent(MassagesActivity.this, MassageActivity.class);
                 intent.putExtra("key_name", "ماساژ یک");
                 startActivity(intent);
 
@@ -99,7 +102,7 @@ public class MassagesActivity extends AppCompatActivity {
         massage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MassagesActivity.this,MassageActivity.class);
+                Intent intent = new Intent(MassagesActivity.this, MassageActivity.class);
                 intent.putExtra("key_name", "ماساژ دو");
                 startActivity(intent);
 
@@ -108,15 +111,13 @@ public class MassagesActivity extends AppCompatActivity {
         massage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MassagesActivity.this,MassageActivity.class);
+                Intent intent = new Intent(MassagesActivity.this, MassageActivity.class);
                 intent.putExtra("key_name", "ماساژ سه");
                 startActivity(intent);
 
             }
         });
 
-
-
     }
-
 }
+
