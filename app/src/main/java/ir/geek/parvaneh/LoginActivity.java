@@ -63,6 +63,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private TextView signupLink;
 
+    //DELETE BUTTON--------------------------
+    private Button del_btn;
+    DatabaseHelper p_db;
+
     RelativeLayout layout;
 
     @Override
@@ -70,6 +74,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         layout = (RelativeLayout) findViewById(R.id.loginActivity);
+
+        //DELETE BUTTON--------------------------
+        del_btn= (Button) findViewById(R.id.DeleteDB);
+        p_db =new DatabaseHelper(this);
 
         // Set up the activity_login form.
         mEmailView = (EditText) findViewById(R.id.email);
@@ -114,6 +122,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
             }
         });
+        deleteDb();
     }
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -319,6 +328,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    //DELETE BUTTON--------------------------
+    public void deleteDb(){
+        del_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = LoginActivity.this;
+                context.deleteDatabase("Project.db");
+            }
+        });
     }
 }
 

@@ -40,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
     public boolean signupDB(String email,String password){
-        Log.d("A","AAAAAAAAAAAAAAA");
+        Log.d("A","Data Inserted.............");
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(T_USER_EMAIL,email);

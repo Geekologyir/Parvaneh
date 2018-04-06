@@ -17,7 +17,7 @@ public class SignupActivity extends AppCompatActivity {
     private TextView loginLink;
     private Button Signup_Btn;
     private EditText email_et,password_et;
-    private Button del_btn;
+
     DatabaseHelper p_db;
 
     @Override
@@ -28,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
         email_et=(EditText)findViewById(R.id.email);
         password_et=(EditText)findViewById(R.id.password);
         Signup_Btn = (Button) findViewById(R.id.signupBtn);
-        del_btn=(Button) findViewById(R.id.DeleteDB);
+
         loginLink = (TextView) findViewById(R.id.loginLink);
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,22 +37,14 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
-        deleteDb();
+
         signup();
     }
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-    public void deleteDb(){
-        del_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = SignupActivity.this;
-                context.deleteDatabase("Project.db");
-            }
-        });
-    }
+
 
     public void signup(){
         Signup_Btn.setOnClickListener(new View.OnClickListener() {
