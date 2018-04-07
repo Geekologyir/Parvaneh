@@ -50,14 +50,17 @@ public class SignupActivity extends AppCompatActivity {
         Signup_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean result =p_db.signupDB(email_et.getText().toString(),password_et.getText().toString());
-                if (result == true) {
+                byte result =p_db.signupDB(email_et.getText().toString(),password_et.getText().toString());
+                if (result == 1) {
                     Toast.makeText(SignupActivity.this,"ثبت نام با موفقت انجام شد.َ",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignupActivity.this,MenuActivity.class));
                     finish();
                 }
-                else{
+                else if(result==0){
                     Toast.makeText(SignupActivity.this,"عملیات با بروز مشکل مواجه شده است، لطفا مجددا امتحان نمایید.",Toast.LENGTH_SHORT).show();
+                }
+                else if(result==2){
+                    Toast.makeText(SignupActivity.this,"ایمیل تکراری است.لطفا ایمیل دیگری را امتحان کنید.",Toast.LENGTH_SHORT).show();
                 }
             }
         });

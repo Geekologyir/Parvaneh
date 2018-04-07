@@ -2,6 +2,7 @@ package ir.geek.parvaneh;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -39,21 +40,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER);
         onCreate(db);
     }
-    public boolean signupDB(String email,String password){
-        Log.d("A","Data Inserted.............");
+    public byte signupDB(String email,String password){
         SQLiteDatabase db= this.getWritableDatabase();
-        ContentValues contentValues=new ContentValues();
-        contentValues.put(T_USER_EMAIL,email);
-        contentValues.put(T_USER_PASSWORD,password);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
-        String date = sdf.format(new Date());
-        contentValues.put(T_USER_REGISTRATIONDATE,date);
-        long result=db.insert(TABLE_USER,null,contentValues);
-        if (result==-1){
-            return false;
+        Cursor res= db.rawQuery("SELECT * FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"="+email,null);
+        if (res.getCount()==0){
+            ContentValues contentValues=new ContentValues();
+            contentValues.put(T_USER_EMAIL,email);
+            contentValues.put(T_USER_PASSWORD,password);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+            String date = sdf.format(new Date());
+            contentValues.put(T_USER_REGISTRATIONDATE,date);
+            long result=db.insert(TABLE_USER,null,contentValues);
+            if (result==-1){
+                //data not inserted
+                return 0;
+            }
+            else{
+                //data inserted
+                return 1;
+            }
         }
         else{
-            return true;
+          //email is exists
+            return 2;
         }
+
     }
 }
