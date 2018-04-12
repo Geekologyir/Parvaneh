@@ -109,14 +109,24 @@
 
 
     </RelativeLayout>
+
     <Button
         android:id="@+id/DeleteDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/title"
+        android:layout_marginStart="140dp"
         android:text="DeleteDb" />
+
+    <Button
+        android:id="@+id/ViewAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/title"
+        android:layout_alignTop="@+id/title"
+        android:text="ViewAll" />
+
 
     <LinearLayout
         android:layout_width="wrap_content"

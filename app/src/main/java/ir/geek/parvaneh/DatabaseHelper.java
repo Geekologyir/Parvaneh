@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,7 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public byte signupDB(String email,String password){
         SQLiteDatabase db= this.getWritableDatabase();
-        Cursor res= db.rawQuery("SELECT * FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"="+email,null);
+        Cursor res= db.rawQuery("SELECT * FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"='"+email+"'",null);
+
         if (res.getCount()==0){
             ContentValues contentValues=new ContentValues();
             contentValues.put(T_USER_EMAIL,email);
@@ -57,6 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             else{
                 //data inserted
+                Log.d("SQLITE","DATA INSERTED: Email: "+email+" Password: "+password);
                 return 1;
             }
         }
@@ -65,5 +69,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return 2;
         }
 
+    }
+
+    public byte loginDB(String email,String password){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor res= db.rawQuery("SELECT * FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"='"+email+"'",null);
+        res.moveToFirst();
+        //Log.d("Db Count",Integer.toString(res.getCount()));
+        //Log.d("test",res.getString(3).toString());
+        //Log.d("pass",password);
+
+        if(password.equals(res.getString(3).toString())){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public Cursor viewAll(String email){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor res= db.rawQuery("SELECT * FROM ["+TABLE_USER+"]",null);
+        return res;
     }
 }

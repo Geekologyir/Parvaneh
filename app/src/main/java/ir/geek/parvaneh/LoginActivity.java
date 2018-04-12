@@ -3,6 +3,7 @@ package ir.geek.parvaneh;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -65,7 +67,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     //DELETE BUTTON--------------------------
     private Button del_btn;
+    private Button viewall_btn;
+    private Button loginBtn;
     DatabaseHelper p_db;
+
 
     RelativeLayout layout;
 
@@ -77,11 +82,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //DELETE BUTTON--------------------------
         del_btn= (Button) findViewById(R.id.DeleteDB);
+        viewall_btn=(Button)findViewById(R.id.ViewAll);
         p_db =new DatabaseHelper(this);
 
         // Set up the activity_login form.
         mEmailView = (EditText) findViewById(R.id.email);
-
+        loginBtn= (Button) findViewById(R.id.loginBtn);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -94,7 +100,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button loginBtn = (Button) findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,7 +127,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
             }
         });
+        viewAll();
         deleteDb();
+
     }
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -176,9 +183,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user activity_login attempt.
             showProgress(true);
+            Toast.makeText(this,"Logged In",Toast.LENGTH_LONG).show();
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
+
+
+
+
     }
 
     private boolean isEmailValid(String email) {
@@ -295,12 +307,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            byte res=p_db.loginDB(mEmailView.getText().toString(),mPasswordView.getText().toString());
+            //Log.d("ali",Byte.toString(res));
+
+            if(res==0){
+                return false;
+            }
+            else if(res==1){
+                return true;
             }
 
             // TODO: register the new account here.
@@ -337,6 +351,48 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View v) {
                 Context context = LoginActivity.this;
                 context.deleteDatabase("Project.db");
+            }
+        });
+    }
+    public void viewAll(){
+        viewall_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor res = p_db.viewAll(mEmailView.getText().toString());
+                if(res.getCount()==0){
+                    showMessage("error","nothing found!");
+                    return;
+                }
+
+                StringBuffer buffer= new StringBuffer();
+                while(res.moveToNext()){
+                    buffer.append("Id: "+res.getString(0)+"\n");
+                    buffer.append("Email: "+res.getString(1)+"\n");
+                    buffer.append("Username: "+res.getString(2)+"\n");
+                    buffer.append("Password: "+res.getString(3)+"\n");
+                    buffer.append("PhoneNumber: "+res.getString(4)+"\n");
+                    buffer.append("RegistrationDate: "+res.getString(5)+"\n");
+                }
+                showMessage("data",buffer.toString());
+            }
+        });
+    }
+
+    public void showMessage(String title,String message){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        Toast.makeText(this,"Ali",Toast.LENGTH_LONG);
+        builder.show();
+    }
+
+    public void login(){
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEmailView.setText("ali");
+                Toast.makeText(LoginActivity.this,"Test...Function...",Toast.LENGTH_SHORT).show();
             }
         });
     }
