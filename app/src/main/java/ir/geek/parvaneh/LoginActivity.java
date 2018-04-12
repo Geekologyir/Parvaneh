@@ -387,14 +387,5 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         builder.show();
     }
 
-    public void login(){
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEmailView.setText("ali");
-                Toast.makeText(LoginActivity.this,"Test...Function...",Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
 
