@@ -35,6 +35,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+
+
 /**
  * A activity_login screen that offers activity_login via email/password.
  */
@@ -183,7 +185,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user activity_login attempt.
             showProgress(true);
-            Toast.makeText(this,"Logged In",Toast.LENGTH_LONG).show();
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
@@ -316,7 +317,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             else if(res==1){
                 return true;
             }
-
+            else if(res==2){
+                return false;
+            }
             // TODO: register the new account here.
 
             return false;

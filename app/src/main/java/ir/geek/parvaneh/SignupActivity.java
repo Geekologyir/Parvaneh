@@ -45,7 +45,6 @@ public class SignupActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-
     public void signup(){
         Signup_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
