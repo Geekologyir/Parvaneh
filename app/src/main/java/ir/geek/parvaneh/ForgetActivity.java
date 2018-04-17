@@ -38,12 +38,12 @@ public class ForgetActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
     public void forgetPassword(){
         forget_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean result =p_db.forgetPasswordDB(email_et.getText().toString());
-                
                 if (result == true) {
                     Toast.makeText(ForgetActivity.this,"کد بازیابی به "+email_et.getText().toString()+" ارسال شد.",Toast.LENGTH_SHORT).show();
                     //TODO:سیستم ارسال ایمیل به آدرس ایمیل مورد نظر
@@ -57,4 +57,5 @@ public class ForgetActivity extends AppCompatActivity {
             }
         });
     }
+
 }

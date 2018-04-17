@@ -25,6 +25,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         p_db=new DatabaseHelper(this);
+
         email_et=(EditText)findViewById(R.id.email);
         password_et=(EditText)findViewById(R.id.password);
         Signup_Btn = (Button) findViewById(R.id.signupBtn);
@@ -40,6 +41,7 @@ public class SignupActivity extends AppCompatActivity {
 
         signup();
     }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
