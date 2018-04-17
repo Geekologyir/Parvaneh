@@ -65,14 +65,6 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
         initializeViews();
 
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String myVariable_2 = extras.getString("key_name");
-            changeActionBar(myVariable_2);
-
-        }
-
-
     }
 
     private void retrieveData() {
@@ -92,8 +84,8 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
 
         difficultyView = (TextView) findViewById(R.id.difficulty);
         difficultyView.setText(difficulty);
-        durationView = (TextView) findViewById(R.id.duration);
-        durationView.setText("تست");
+        durationView = (TextView) findViewById(R.id.videoDuration);
+        durationView.setText(duration + " دقیقه");
         descriptionView = (TextView) findViewById(R.id.description);
         descriptionView.setText(description);
 
@@ -113,9 +105,9 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
                     mVideoView.seekTo(mSeekPosition);
                 }
                 mVideoView.start();
-                mMediaController.setTitle(title);
             }
         });
+        mMediaController.setTitle(title);
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {

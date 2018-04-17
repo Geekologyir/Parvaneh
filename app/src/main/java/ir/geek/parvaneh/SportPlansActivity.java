@@ -54,7 +54,6 @@ public class SportPlansActivity extends AppCompatActivity {
         public SpListAdapter(Context context, int resource, int textViewResourceId,
                          String[] strings) {
             super(context, resource, textViewResourceId, strings);
-            // TODO Auto-generated constructor stub
         }
 
         @Override

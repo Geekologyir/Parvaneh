@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.geek.parvaneh.TerminologyActivity">
+
+    <include layout="@layout/navigation_view" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/layoutBackground"
+        android:layoutDirection="rtl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationZ="4dp"
+            android:elevation="4dp"
+            android:paddingBottom="20dp"
+            android:id="@+id/search_toolbar"
+            android:background="@color/colorPrimary">
+
+            <include
+                android:id="@+id/my_toolbar"
+                layout="@layout/toolbar" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textinputbg"
+                android:layout_below="@id/my_toolbar"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/search_block">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/search_icon"
+                    android:src="@drawable/ic_search"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@null"
+                    android:id="@+id/search_box"
+                    android:hint="@string/search_hint"
+                    android:layout_toEndOf="@id/search_icon" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/queries"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/search_toolbar"
+            android:background="@drawable/block_bg"
+            android:elevation="4dp">
+
+        </ListView>
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

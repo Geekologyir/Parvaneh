@@ -31,7 +31,9 @@ dependencies {
     implementation 'com.linsea:universalvideoview:1.1.0@aar'
     implementation('com.github.woxthebox:draglistview:1.5.4') {
         exclude group: 'com.android.support'
+
     }
 
     implementation project(':persianmaterialdatetimepicker')
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
 }

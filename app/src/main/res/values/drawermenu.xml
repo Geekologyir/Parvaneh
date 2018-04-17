@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drawermenu">
+        <item name="exit">اطلاعات فردی</item>
+        <item name="exit">پروفایل</item>
+        <item name="exit">درباره ما</item>
+        <item name="exit">درخواست مربی</item>
+        <item name="exit">افزودن کاربر</item>
+        <item name="exit">خروج</item>
+
+
+    </string-array>
+</resources>
