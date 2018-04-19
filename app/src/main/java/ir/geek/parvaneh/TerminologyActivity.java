@@ -3,6 +3,7 @@ package ir.geek.parvaneh;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -119,7 +120,7 @@ public class TerminologyActivity extends AppCompatActivity {
         params.gravity= Gravity.END;
         params.leftMargin= 20 * (int)context.getResources().getDisplayMetrics().density;
         back.setLayoutParams(params);
-        back.setImageDrawable(getDrawable(R.drawable.ic_arrow_back));
+        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

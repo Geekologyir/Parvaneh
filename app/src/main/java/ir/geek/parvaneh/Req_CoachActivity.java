@@ -24,10 +24,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import ir.geek.parvaneh.dataClass.User;
+import ir.geek.parvaneh.dataClasses.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Req_CoachActivity extends AppCompatActivity {
@@ -51,9 +50,9 @@ public class Req_CoachActivity extends AppCompatActivity {
         changeActionBar(getString(R.string.activity_terminology_title));
 
 
-        queries = Arrays.asList(words);
+        ///queries = Arrays.asList(words);
 
-        setAdapterList(queries);
+        //setAdapterList(queries);
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -63,14 +62,14 @@ public class Req_CoachActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String word = searchBox.getText().toString();
-                queries = new ArrayList<>();
+                /*queries = new ArrayList<>();
                 for(String w : words){
                     if (w.contains(word)) {
                         queries.add(w);
                     }
                 }
 
-                setAdapterList(queries);
+                setAdapterList(queries);*/
             }
 
             @Override
@@ -92,8 +91,8 @@ public class Req_CoachActivity extends AppCompatActivity {
         queryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(Req_CoachActivity.this,Req_coachItemActivity.class));
-                finish();
+                //startActivity(new Intent(Req_CoachActivity.this,Req_coachItemActivity.class));
+                //finish();
             }
         });
     }

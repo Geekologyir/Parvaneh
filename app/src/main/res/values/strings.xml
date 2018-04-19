@@ -72,4 +72,12 @@
     <string name="new_rest_btn">استراحت</string>
     <string name="startPlan">شروع برنامه</string>
     <string name="easy">آسان</string>
+    <string name="editplan">ویرایش برنامه</string>
+    <string name="minutes">دقیقه</string>
+    <string name="new_sp_title_hint">اسم این برنامه چیه؟</string>
+    <string name="removeAll">حذف کل\nبرای حذف دکمه را نگه دارید</string>
+    <string name="removed">حذف شد</string>
+    <string name="five_minutes">5</string>
+    <string name="ten_minutes">10</string>
+    <string name="rest">استراحت</string>
 </resources>

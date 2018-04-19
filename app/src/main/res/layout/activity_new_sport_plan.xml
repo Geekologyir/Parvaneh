@@ -22,7 +22,7 @@
         android:padding="10dp">
 
         <RelativeLayout
-            android:id="@+id/time_input_block"
+            android:id="@+id/title_input_block"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="@drawable/textinputbg">
@@ -33,7 +33,31 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/time"
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="@string/new_sp_title_hint"
+                    android:layoutDirection="rtl"
+                    android:singleLine="true"
+                    android:textIsSelectable="false" />
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/time_input_block"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/title_input_block"
+            android:background="@drawable/textinputbg">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/start_time"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
@@ -167,7 +191,15 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_date" />
         </RelativeLayout>
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/removeSP"
+            android:text="@string/removeAll"
+            android:background="@drawable/removebtn"
+            android:layout_below="@id/finish_time_input_block"
+            android:textColor="@color/link"
+            />
     </RelativeLayout>
 
     <RelativeLayout

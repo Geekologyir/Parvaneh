@@ -1,4 +1,4 @@
-package ir.geek.parvaneh.dataClass;
+package ir.geek.parvaneh.dataClasses;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
