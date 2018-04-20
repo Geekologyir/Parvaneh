@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group> <item android:id="@+id/samplefirst" android:title="samplefirst" android:icon="@drawable/ic_avatar" />
-    <item android:id="@+id/samplesecond" android:title="samplesecond" android:icon="@drawable/ic_avatar"/>
-    <item android:id="@+id/samplethird" android:title="samplethird" android:icon="@drawable/ic_avatar"/>
-    <item android:id="@+id/sampleforth" android:title="sampleforth" android:icon="@drawable/ic_avatar"/>
-    <item android:id="@+id/samplefifth" android:title="samplefifth" android:icon="@drawable/ic_avatar"/>
+    <group> <item android:id="@+id/samplefirst" android:title="اطلاعات فردی"  />
+    <item android:id="@+id/samplesecond" android:title="پروفایل" />
+    <item android:id="@+id/samplethird" android:title="درباره ما" />
+    <item android:id="@+id/sampleforth" android:title="درخواست مربی" />
+    <item android:id="@+id/samplefifth" android:title="افزودن کاربر" />
+        <item android:id="@+id/samplesixth" android:title="خروج" />
     </group>
 </menu>

@@ -2,6 +2,7 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -49,14 +50,11 @@ public class MassagesActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
     private void changeActionBar(String titleText) {
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
         setTitle("");
         TextView title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(titleText);
-
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-
-
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
@@ -69,14 +67,13 @@ public class MassagesActivity extends AppCompatActivity {
         params2.gravity = Gravity.END;
         params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
         back.setLayoutParams(params2);
-        back.setImageDrawable(getDrawable(R.drawable.ic_arrow_back));
+        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MassagesActivity.this, MenuActivity.class));
             }
         });
-
         toolbar.addView(back);
     }
     @Override
@@ -90,34 +87,22 @@ public class MassagesActivity extends AppCompatActivity {
     }
 
     private void handleClicks() {
-        massage1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MassagesActivity.this, MassageActivity.class);
-                intent.putExtra("key_name", "ماساژ یک");
-                startActivity(intent);
-
-            }
-        });
-        massage2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MassagesActivity.this, MassageActivity.class);
-                intent.putExtra("key_name", "ماساژ دو");
-                startActivity(intent);
-
-            }
-        });
-        massage3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MassagesActivity.this, MassageActivity.class);
-                intent.putExtra("key_name", "ماساژ سه");
-                startActivity(intent);
-
-            }
-        });
-
+        for(int i=0;i< gridLayout.getChildCount();i++){
+            gridLayout.getChildAt(i).setOnClickListener(itemsClick);
+        }
     }
+    View.OnClickListener itemsClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            squareLayout layout = (squareLayout) view;
+            TextView titleView = (TextView) layout.getChildAt(1);
+            Intent intent = new Intent(context,MassageActivity.class);
+            intent.putExtra("title", titleView.getText().toString());
+            startActivity(intent);
+        }
+    };
+
+
+
 }
 

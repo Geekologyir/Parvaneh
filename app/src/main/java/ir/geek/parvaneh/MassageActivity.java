@@ -3,6 +3,7 @@ package ir.geek.parvaneh;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -65,14 +66,6 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
         initializeViews();
 
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String myVariable_2 = extras.getString("key_name");
-            changeActionBar(myVariable_2);
-
-        }
-
-
     }
 
     private void retrieveData() {
@@ -92,8 +85,8 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
 
         difficultyView = (TextView) findViewById(R.id.difficulty);
         difficultyView.setText(difficulty);
-        durationView = (TextView) findViewById(R.id.duration);
-        durationView.setText("تست");
+        durationView = (TextView) findViewById(R.id.videoDuration);
+        durationView.setText(duration + " دقیقه");
         descriptionView = (TextView) findViewById(R.id.description);
         descriptionView.setText(description);
 
@@ -113,9 +106,9 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
                     mVideoView.seekTo(mSeekPosition);
                 }
                 mVideoView.start();
-                mMediaController.setTitle(title);
             }
         });
+        mMediaController.setTitle(title);
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -141,7 +134,7 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
         params2.gravity = Gravity.END;
         params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
         back.setLayoutParams(params2);
-        back.setImageDrawable(getDrawable(R.drawable.ic_arrow_back));
+        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

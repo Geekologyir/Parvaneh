@@ -19,6 +19,7 @@
             android:padding="15dp">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -53,7 +54,7 @@
             android:padding="15dp">
 
             <TextView
-                android:id="@+id/sp_item_time"
+                android:id="@+id/nextTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="امروز، ساعت ۱۷"
@@ -61,10 +62,10 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/sp_item_subject"
+                android:id="@+id/exercises"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sp_item_time"
+                android:layout_below="@id/nextTime"
                 android:text="هوازی، دو، شنا"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -73,7 +74,7 @@
                 android:id="@+id/duration_icon"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_below="@id/sp_item_subject"
+                android:layout_below="@id/exercises"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/ic_timer" />
 
@@ -81,7 +82,7 @@
                 android:id="@+id/duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sp_item_subject"
+                android:layout_below="@id/exercises"
                 android:layout_marginRight="5dp"
                 android:layout_toEndOf="@id/duration_icon"
                 android:text="۴۰ دقیقه"

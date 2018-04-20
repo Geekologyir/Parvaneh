@@ -8,10 +8,7 @@
     android:layout_height="match_parent"
     tools:context="ir.geek.parvaneh.MenuActivity">
 
-    <include
-        layout="@layout/navigation_view"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="189dp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -278,5 +275,7 @@
             </GridLayout>
         </ScrollView>
     </RelativeLayout>
+    <include
+        layout="@layout/navigation_view"/>
 </android.support.v4.widget.DrawerLayout>
 

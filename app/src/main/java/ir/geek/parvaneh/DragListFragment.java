@@ -17,7 +17,12 @@ import com.woxthebox.draglistview.DragListView;
 
 import java.util.ArrayList;
 
+import ir.geek.parvaneh.dataClasses.SportPlanItem;
+
 public class DragListFragment extends Fragment {
+
+
+    private ArrayList<Integer> ids;
 
     private ArrayList<Pair<Long, String>> mItemArray;
     private DragListView mDragListView;
@@ -46,15 +51,23 @@ public class DragListFragment extends Fragment {
             public void onItemDragEnded(int fromPosition, int toPosition) {
                 if (fromPosition != toPosition) {
                     Toast.makeText(mDragListView.getContext(), "End - position: " + toPosition, Toast.LENGTH_SHORT).show();
+                    // ToDo : Update SportPanItem SET order = toposition where order = from postition
+                    // Bug : If it go to offline mode in this page , it doesn't work correctly
+
                 }
             }
         });
 
         mItemArray = new ArrayList<>();
-        //ToDo : get ids from db
-        for (int i = 0; i < 2; i++) {
-            mItemArray.add(new Pair<>((long) i, "Item " + i));
+        if(getArguments()!=null){
+            if(getArguments().containsKey("ids")){
+                ids = getArguments().getIntegerArrayList("ids");
+                for (int id:ids) {
+                    mItemArray.add(new Pair<>((long) id, getArguments().getString("type") ));
+                }
+            }
         }
+
 
         setupListRecyclerView();
         return view;
@@ -67,24 +80,9 @@ public class DragListFragment extends Fragment {
 
     private void setupListRecyclerView() {
         mDragListView.setLayoutManager(new LinearLayoutManager(getContext()));
-        spItemAdapter listAdapter = new spItemAdapter(mItemArray, R.layout.sport_plan_sport, R.id.drag_handle, false);
+        spItemAdapter listAdapter = new spItemAdapter(mItemArray, R.layout.sport_plan_item, R.id.drag_handle, false);
         mDragListView.setAdapter(listAdapter, true);
         mDragListView.setCanDragHorizontally(false);
-        mDragListView.setCustomDragItem(new MyDragItem(getContext(), R.layout.sport_plan_sport));
-    }
-
-    private static class MyDragItem extends DragItem {
-
-        MyDragItem(Context context, int layoutId) {
-            super(context, layoutId);
-        }
-
-        @Override
-        public void onBindDragView(View clickedView, View dragView) {
-            CharSequence text = ((TextView) clickedView.findViewById(R.id.sport_title)).getText();
-            ((TextView) dragView.findViewById(R.id.sport_title)).setText(text);
-            dragView.findViewById(R.id.sport_plan_sport).setBackgroundColor(dragView.getResources().getColor(R.color.grey));
-        }
     }
 }
 

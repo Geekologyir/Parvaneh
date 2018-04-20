@@ -2,12 +2,15 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,12 +22,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ir.geek.parvaneh.dataClasses.SportPlan;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SportPlansActivity extends AppCompatActivity {
-    TextView title;
+    int userId;
+    List<String> title;
+    List<String> nextTime;
+    List<String> exercises = new ArrayList<String>();
+    List<Integer> duration;
+
     ListView spList;
     Button newPlanBtn;
     Context context;
@@ -32,13 +44,17 @@ public class SportPlansActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToogle;
 
-    String[] my_items = { "1","2","3","4","5"};
+
+    List<String> itemIds;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sportplans);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        initializeViews();
+        userId = 1; // ToDo : Get validate user id
+
+        initializer();
         changeActionBar(getString(R.string.activity_sportplans_title));
 
 
@@ -49,41 +65,19 @@ public class SportPlansActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
-    private class SpListAdapter extends ArrayAdapter<String> {
-
-        public SpListAdapter(Context context, int resource, int textViewResourceId,
-                         String[] strings) {
-            super(context, resource, textViewResourceId, strings);
-            // TODO Auto-generated constructor stub
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.sport_plans_item, parent, false);
-
-            TextView edit = (TextView) row.findViewById(R.id.editBtn);
-            edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(SportPlansActivity.this, NewSportPlanActivity.class));
-                    finish();
-                }
-            });
-            return row;
-        }
-    }
-    private void initializeViews(){
+    private void initializer(){
         context = getApplicationContext();
         spList = (ListView) findViewById(R.id.spList);
+        itemIds = getItemIds();
         spList.setAdapter(new SpListAdapter(this,android.R.layout.simple_list_item_1,
-                R.id.sp_item_subject,
-                my_items));
+                R.id.exercises,
+                itemIds));
         spList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                // ToDo: Send sport plan id to next page
-                startActivity(new Intent(SportPlansActivity.this,SportPlanActivity.class));
+                Intent intent = new Intent(SportPlansActivity.this,SportPlanActivity.class);
+                intent.putExtra("spId",Integer.parseInt(view.getTag().toString()));
+                startActivity(intent);
                 finish();
             }
         });
@@ -96,11 +90,20 @@ public class SportPlansActivity extends AppCompatActivity {
             }
         });
     }
+    private List<String> getItemIds(){
+        List<String> ids = new ArrayList<String>();
+        // ToDo : Select id from sport_plans where user_id = userId
+        ids.add("1");
+        ids.add("2");
+        ids.add("3");
+
+        return ids;
+    }
     private void changeActionBar(String titleText) {
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         setTitle("");
-        title = (TextView) findViewById(R.id.toolbar_title);
+        TextView title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(titleText);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
@@ -115,7 +118,7 @@ public class SportPlansActivity extends AppCompatActivity {
         params.gravity= Gravity.END;
         params.leftMargin= 20 * (int)context.getResources().getDisplayMetrics().density;
         back.setLayoutParams(params);
-        back.setImageDrawable(getDrawable(R.drawable.ic_arrow_back));
+        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +135,56 @@ public class SportPlansActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class SpListAdapter extends ArrayAdapter<String> {
+
+        public SpListAdapter(Context context, int resource, int textViewResourceId,
+                         List<String> ids) {
+            super(context, resource, textViewResourceId, ids);
+
+            title = new ArrayList<String>();
+            nextTime = new ArrayList<String>();
+            exercises = new ArrayList<String>();
+            duration = new ArrayList<Integer>();
+
+            for(String id : ids){
+                SportPlan sportPlan = new SportPlan(Integer.parseInt(id));
+                title.add(sportPlan.getTitle());
+                nextTime.add(sportPlan.nextDate());
+                exercises.add(sportPlan.getExercisesStr());
+                duration.add(sportPlan.getDuration());
+            }
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = inflater.inflate(R.layout.sport_plans_item, parent, false);
+
+            TextView titleView = (TextView) row.findViewById(R.id.title);
+            titleView.setText(title.get(position));
+            TextView nextTimeView = (TextView) row.findViewById(R.id.nextTime);
+            nextTimeView.setText(nextTime.get(position));
+            TextView exercisesView = (TextView) row.findViewById(R.id.exercises);
+            exercisesView.setText(exercises.get(position));
+            TextView durationView = (TextView) row.findViewById(R.id.duration);
+            durationView.setText(duration.get(position)+" دقیقه");
+
+            TextView edit = (TextView) row.findViewById(R.id.editBtn);
+            edit.setTag(itemIds.get(position));
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(SportPlansActivity.this,NewSportPlanActivity.class);
+                    intent.putExtra("spId",view.getTag().toString());
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            row.setTag(itemIds.get(position));
+            return row;
+        }
     }
 
 }
