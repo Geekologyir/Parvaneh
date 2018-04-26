@@ -45,7 +45,7 @@ public class SportPlansActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mToogle;
 
 
-    List<String> itemIds;
+    List<Integer> itemIds;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,12 +90,12 @@ public class SportPlansActivity extends AppCompatActivity {
             }
         });
     }
-    private List<String> getItemIds(){
-        List<String> ids = new ArrayList<String>();
+    private List<Integer> getItemIds(){
+        List<Integer> ids = new ArrayList<Integer>();
         // ToDo : Select id from sport_plans where user_id = userId
-        ids.add("1");
-        ids.add("2");
-        ids.add("3");
+        ids.add(1);
+        ids.add(2);
+        ids.add(3);
 
         return ids;
     }
@@ -137,13 +137,13 @@ public class SportPlansActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class SpListAdapter extends ArrayAdapter<String> {
-
+    private class SpListAdapter extends ArrayAdapter<Integer> {
+        List<Integer> idList;
         public SpListAdapter(Context context, int resource, int textViewResourceId,
-                         List<String> ids) {
+                         List<Integer> ids) {
             super(context, resource, textViewResourceId, ids);
-
-            title = new ArrayList<String>();
+            idList = ids;
+            /*title = new ArrayList<String>();
             nextTime = new ArrayList<String>();
             exercises = new ArrayList<String>();
             duration = new ArrayList<Integer>();
@@ -154,7 +154,7 @@ public class SportPlansActivity extends AppCompatActivity {
                 nextTime.add(sportPlan.nextDate());
                 exercises.add(sportPlan.getExercisesStr());
                 duration.add(sportPlan.getDuration());
-            }
+            }*/
         }
 
         @Override
@@ -162,14 +162,16 @@ public class SportPlansActivity extends AppCompatActivity {
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.sport_plans_item, parent, false);
 
+            SportPlan sportPlan = new SportPlan(idList.get(position));
+
             TextView titleView = (TextView) row.findViewById(R.id.title);
-            titleView.setText(title.get(position));
+            titleView.setText(sportPlan.getTitle());
             TextView nextTimeView = (TextView) row.findViewById(R.id.nextTime);
-            nextTimeView.setText(nextTime.get(position));
+            nextTimeView.setText(sportPlan.nextDate());
             TextView exercisesView = (TextView) row.findViewById(R.id.exercises);
-            exercisesView.setText(exercises.get(position));
+            exercisesView.setText(sportPlan.getExercisesStr());
             TextView durationView = (TextView) row.findViewById(R.id.duration);
-            durationView.setText(duration.get(position)+" دقیقه");
+            durationView.setText(sportPlan.getDuration() + getString(R.string.minutes));
 
             TextView edit = (TextView) row.findViewById(R.id.editBtn);
             edit.setTag(itemIds.get(position));
