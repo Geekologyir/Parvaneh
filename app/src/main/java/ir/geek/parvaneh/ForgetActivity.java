@@ -2,6 +2,7 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class ForgetActivity extends AppCompatActivity {
     private TextView loginLink;
     private Button forget_btn;
     private EditText email_et;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

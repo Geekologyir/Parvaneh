@@ -2,7 +2,9 @@ package ir.geek.parvaneh;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -10,7 +12,7 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -32,14 +34,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String T_USER_PHONENUMBER = "PHONENUMBER";
     public static final String T_USER_REGISTRATIONDATE = "REGISTRATIONDATE";
 //T_USERPROFILE Columns
-    public static final String T_USERPROFILE_ID = "ID";
     public static final String T_USERPROFILE_USERID = "USERID";//FK From T_USERS
     public static final String T_USERPROFILE_FIRSTNAME = "FIRSTNAME";
     public static final String T_USERPROFILE_LASTNAME = "LASTNAME";
     public static final String T_USERPROFILE_DOB = "DOB";
     public static final String T_USERPROFILE_CITY = "CITY";
 //T_PYSICALINFO Columns
-    public static final String T_PHYSICALINFO_ID = "ID";
     public static final String T_PHYSICALINFO_USERID = "USERID";//FK From T_USERS
     public static final String T_PHYSICALINFO_HEIGHT = "HEIGHT";
     public static final String T_PHYSICALINFO_WEIGHT = "WEIGHT";
@@ -72,15 +72,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String T_DOINGSPORTPLAN_STARTTIME = "STARTTIME";
     public static final String T_DOINGSPORTPLAN_PERCENTAGE = "PERCENTAGE";
 
-public static  final String ret(){
-    return T_USER_ID;
-}
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        //shPref=getSharedPreferences(MyPref,Context.MODE_PRIVATE);
 
 //TABLE_USER Creation
         db.execSQL("CREATE TABLE " + TABLE_USER + " (" +
@@ -93,16 +92,16 @@ public static  final String ret(){
 
 //TABLE_USERPROFILE Creation
         db.execSQL("CREATE TABLE " + TABLE_USERPROFILE + " (" +
-                T_USERPROFILE_USERID+" INTEGER," +
+                T_USERPROFILE_USERID+" INTEGER PRIMARY KEY," +
                 T_USERPROFILE_FIRSTNAME+" TEXT," +
-                T_USERPROFILE_LASTNAME+"TEXT ," +
+                T_USERPROFILE_LASTNAME+" TEXT ," +
                 T_USERPROFILE_DOB+" DATE," +
                 T_USERPROFILE_CITY+" TEXT," +
                 "FOREIGN KEY("+ T_USERPROFILE_USERID +") REFERENCES "+ TABLE_USER+"("+ T_USER_ID +"))");
 
 //TABLE_PHYSICALINFO Creation
         db.execSQL("CREATE TABLE " + TABLE_PHYSICALINFO + " (" +
-                T_PHYSICALINFO_USERID+" TEXT," +
+                T_PHYSICALINFO_USERID+" INTEGER," +
                 T_PHYSICALINFO_HEIGHT+" INTEGER," +
                 T_PHYSICALINFO_WEIGHT+" FLOAT," +
                 "FOREIGN KEY("+T_PHYSICALINFO_USERID+") REFERENCES "+ TABLE_USER+"("+ T_USER_ID+"))");
@@ -117,7 +116,7 @@ public static  final String ret(){
 //TABLE_SPORTPLAN Creation
         db.execSQL("CREATE TABLE " + TABLE_SPORTPLAN + " (" +
                 T_SPORTPLAN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +
-                T_SPORTPLAN_USERID+" TEXT," +
+                T_SPORTPLAN_USERID+" INTEGER," +
                 T_SPORTPLAN_CREATORID +" TEXT," +
                 T_SPORTPLAN_TOTALDURATION+" TEXT," +
                 T_SPORTPLAN_SUBMITIONDATE+" TEXT," +
@@ -159,6 +158,29 @@ public static  final String ret(){
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPORTITEMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOINGSPORTPLAN);
         onCreate(db);
+    }
+
+    public long profileDB_personalInfo(String userid,String firstname,String lastname,String dob,String city){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        Log.d("UserProfile add","userid: "+userid+" fname: "+firstname+" lastname: "+lastname+" dob: "+dob+" city: "+city);
+        contentValues.put(T_USERPROFILE_USERID,userid);
+        contentValues.put(T_USERPROFILE_FIRSTNAME,firstname);
+        contentValues.put(T_USERPROFILE_LASTNAME,lastname);
+        contentValues.put(T_USERPROFILE_DOB,dob);
+        contentValues.put(T_USERPROFILE_CITY,city);
+        long result = db.insert(TABLE_USERPROFILE, null, contentValues);
+        return result;
+    }
+
+    public long profileDB_corporealInfo(String userid,String height,String weight){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(T_PHYSICALINFO_USERID,userid);
+        contentValues.put(T_PHYSICALINFO_HEIGHT,height);
+        contentValues.put(T_PHYSICALINFO_WEIGHT,weight);
+        long result = db.insert(TABLE_PHYSICALINFO, null, contentValues);
+        return result;
     }
 
     public byte signupDB(String email, String password) {
@@ -213,11 +235,33 @@ public static  final String ret(){
             } else {//username or password in incorrect
                 return 0;
             }
-        } else {
+        }
+        else {
             //nothing found
             return 2;
         }
     }
+
+    public Cursor profileDB_personalInfo_retrieve(String id){
+        Log.d("database Helper...",id);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_USERPROFILE+"] WHERE "+T_USERPROFILE_USERID+"='"+id+"'",null);
+        return res;
+    }
+
+    public Cursor profileDB_corporealInfo_retrieve(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_PHYSICALINFO+"] WHERE "+T_PHYSICALINFO_USERID+"='"+id+"'",null);
+        return res;
+    }
+
+    public String getId_from_email(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res=db.rawQuery("SELECT ["+ T_USER_ID+"] FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"='"+email+"'",null);
+        res.moveToFirst();
+        return res.getString(0).toString();
+    }
+
 
     public Cursor viewAll(String email) {
         SQLiteDatabase db = this.getWritableDatabase();

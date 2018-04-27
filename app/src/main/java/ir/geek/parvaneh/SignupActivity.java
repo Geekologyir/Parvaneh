@@ -2,6 +2,7 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,11 +53,14 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 byte result =p_db.signupDB(email_et.getText().toString(),password_et.getText().toString());
+
                 if (result == 1) {
-                    Toast.makeText(SignupActivity.this,"ثبت نام با موفقت انجام شد.َ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this,"ثبت نام با موفقت انجام شد.",Toast.LENGTH_SHORT).show();
+                    addToSharedPreferences();
                     startActivity(new Intent(SignupActivity.this,MenuActivity.class));
                     finish();
                 }
+
                 else if(result==0){
                     Toast.makeText(SignupActivity.this,"عملیات با بروز مشکل مواجه شده است، لطفا مجددا امتحان نمایید.",Toast.LENGTH_SHORT).show();
                 }
@@ -66,5 +70,24 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void addToSharedPreferences(){
+        SharedPreferences shPref;
+
+        String MyPref = "MyPrefers";
+        String shEmail = "shEmail";
+        String shId = "shId";
+
+        shPref = getSharedPreferences(MyPref,Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor sEdit = shPref.edit();
+        sEdit.putString(shEmail,email_et.getText().toString());
+        String id=p_db.getId_from_email(email_et.getText().toString());
+        sEdit.putString(shId,id);
+        sEdit.commit();
+
+        Toast.makeText(SignupActivity.this,shPref.getString(shEmail,null)+"\n"+shPref.getString(shId,null),Toast.LENGTH_LONG).show();
+    }
+
 
 }

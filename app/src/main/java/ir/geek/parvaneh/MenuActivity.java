@@ -2,6 +2,7 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -21,6 +22,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         setTitle("");
+        //SharedPreferences shpref=getSharedPreferences(SplashActivity.MyPref,Context.MODE_PRIVATE);
 
+        //Toast.makeText(MenuActivity.this,shpref.getString(LoginActivity.shEmail,null),Toast.LENGTH_LONG).show();
         setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar));
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);

@@ -15,14 +15,11 @@ import android.widget.RelativeLayout;
 
 public class SplashActivity extends Activity {
     RelativeLayout layout;
-    public static final String MyPref = "MyPrefers";
-    public static final String shEmail = "shEmail";
-    public static final String shId = "shId";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         // Make Activity Fullscreen
@@ -47,11 +44,24 @@ public class SplashActivity extends Activity {
 
     }
 
-/*
-    public static void setName(String nameArg) {
-        s = nameArg;
-        globalId = nameArg;
+
+    private String getShId() {
+        String MyPref = "MyPrefers";
+        String shEmail = "shEmail";
+        String shId = "shId";
+        SharedPreferences shPref;
+        shPref = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        return shPref.getString(shId, null);
     }
-*/
+
+    private String getShEmail() {
+        String MyPref = "MyPrefers";
+        String shEmail = "shEmail";
+        String shId = "shId";
+        SharedPreferences shPref;
+        shPref = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        return shPref.getString(shEmail, null);
+    }
+
 
 }

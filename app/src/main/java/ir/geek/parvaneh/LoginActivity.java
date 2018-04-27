@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -19,7 +20,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,12 +35,11 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-
-
 /**
  * A activity_login screen that offers activity_login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -60,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private EditText mEmailView;
+    public EditText mEmailView;
     private EditText mPasswordView;
     private TextView forgetLink;
     private View mProgressView;
@@ -72,6 +71,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private Button viewall_btn;
     private Button loginBtn;
     DatabaseHelper p_db;
+
+    SharedPreferences shPref;
 
 
     RelativeLayout layout;
@@ -91,6 +92,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = (EditText) findViewById(R.id.email);
         loginBtn= (Button) findViewById(R.id.loginBtn);
         mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailView.setText("123@123");
+        mPasswordView.setText("123123");
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -303,7 +307,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 return false;
             }
@@ -332,8 +336,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 Toast.makeText(LoginActivity.this,"وارد شد",Toast.LENGTH_SHORT).show();
+                addToSharedPreferences();
                 startActivity(new Intent(LoginActivity.this,MenuActivity.class));
-            } else {
+            }
+
+            else {
                 /*mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();*/
                 Toast.makeText(LoginActivity.this,getString(R.string.login_error),Toast.LENGTH_LONG).show();
@@ -380,7 +387,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
     }
-
     public void showMessage(String title,String message){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setCancelable(true);
@@ -389,6 +395,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Toast.makeText(this,"Ali",Toast.LENGTH_LONG);
         builder.show();
     }
+
+    public void addToSharedPreferences(){
+        String MyPref = "MyPrefers";
+        String shEmail = "shEmail";
+        String shId = "shId";
+        shPref = getSharedPreferences(MyPref,Context.MODE_PRIVATE);
+        SharedPreferences.Editor sEdit = shPref.edit();
+        sEdit.putString(shEmail,mEmailView.getText().toString());
+        String id=p_db.getId_from_email(mEmailView.getText().toString());
+        sEdit.putString(shId,id);
+        sEdit.commit();
+        Toast.makeText(LoginActivity.this,shPref.getString(shEmail,null)+"\n"+shPref.getString(shId,null),Toast.LENGTH_LONG).show();
+    }
+
+
 
 }
 
