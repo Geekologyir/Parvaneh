@@ -82,4 +82,5 @@
     <string name="rest">استراحت</string>
     <string name="medium">متوسط</string>
     <string name="hard">سخت</string>
+    <string name="account_info_title">اطلاعات حساب کاربری</string>
 </resources>

@@ -18,13 +18,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.geek.parvaneh.dataClasses.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class InfoAccountActivity extends AppCompatActivity {
+    int userId;
+    User user;
 
-    EditText user_name,email,phone;
+    EditText username,email,phone;
     List<EditText> accountFields;
-    TextView edite_account , edite_password;
+    TextView editAccount, editPassword;
     Context context;
     DrawerLayout mDrawerLayout;
 
@@ -37,7 +40,7 @@ public class InfoAccountActivity extends AppCompatActivity {
         initializeViews();
         retrieveData();
         setClickHanlders();
-        changeActionBar("اطلاعات حساب کاربری" );
+        changeActionBar(getString(R.string.account_info_title) );
     }
 
     @Override
@@ -77,27 +80,28 @@ public class InfoAccountActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         context = getApplicationContext();
         accountFields = new ArrayList<EditText>();
-        user_name = (EditText) findViewById(R.id.user_name);
-        accountFields.add(user_name);
+        username = (EditText) findViewById(R.id.username);
+        accountFields.add(username);
         email = (EditText) findViewById(R.id.email);
         accountFields.add(email);
         phone = (EditText) findViewById(R.id.phone);
         accountFields.add(phone);
 
-        edite_account = (TextView) findViewById(R.id.edite_account);
-        edite_password = (TextView) findViewById(R.id.edit_password);
+        editAccount = (TextView) findViewById(R.id.edit_account);
+        editPassword = (TextView) findViewById(R.id.edit_password);
 
     }
 
     private void retrieveData() {
-        // ToDo : Change the values from db to make app dynimic
-        user_name.setText("زهرا");
-        email.setText("zahraabhari76@gmail.com");
-        phone.setText("09199749769");
+        userId = 1;
+        user = new User(userId);
+        username.setText(user.getUsername());
+        email.setText(user.getEmail());
+        phone.setText(user.getPhoneNumber());
     }
 
     private void setClickHanlders() {
-        edite_account.setOnClickListener(new View.OnClickListener() {
+        editAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for (EditText e : accountFields) {
@@ -107,9 +111,9 @@ public class InfoAccountActivity extends AppCompatActivity {
                     e.setClickable(true);
                 }
 
-                edite_account.setText(getString(R.string.done));
-                edite_account.setTextColor(getColor(R.color.link));
-                edite_account.setOnClickListener(new View.OnClickListener() {
+                editAccount.setText(getString(R.string.done));
+                editAccount.setTextColor(ContextCompat.getColor(context, R.color.link));
+                editAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         // ToDo : Save changes in db
@@ -120,7 +124,7 @@ public class InfoAccountActivity extends AppCompatActivity {
             }
         });
 
-        edite_password.setOnClickListener(new View.OnClickListener() {
+        editPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(InfoAccountActivity.this,EditPasswordActivity.class));
