@@ -22,7 +22,7 @@ import ir.geek.parvaneh.dataClasses.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class InfoAccountActivity extends AppCompatActivity {
-    int userId;
+    String userId;
     User user;
 
     EditText username,email,phone;
@@ -93,8 +93,8 @@ public class InfoAccountActivity extends AppCompatActivity {
     }
 
     private void retrieveData() {
-        userId = 1;
-        user = new User(userId);
+        userId = "1";
+        user = new User(userId,context);
         username.setText(user.getUsername());
         email.setText(user.getEmail());
         phone.setText(user.getPhoneNumber());

@@ -163,7 +163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long profileDB_personalInfo(String userid,String firstname,String lastname,String dob,String city){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        Log.d("UserProfile add","userid: "+userid+" fname: "+firstname+" lastname: "+lastname+" dob: "+dob+" city: "+city);
+        //Log.d("UserProfile add","userid: "+userid+" fname: "+firstname+" lastname: "+lastname+" dob: "+dob+" city: "+city);
         contentValues.put(T_USERPROFILE_USERID,userid);
         contentValues.put(T_USERPROFILE_FIRSTNAME,firstname);
         contentValues.put(T_USERPROFILE_LASTNAME,lastname);
@@ -245,23 +245,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor profileDB_personalInfo_retrieve(String id){
         Log.d("database Helper...",id);
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_USERPROFILE+"] WHERE "+T_USERPROFILE_USERID+"='"+id+"'",null);
+        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_USERPROFILE+"] WHERE "+T_USERPROFILE_USERID+"='"+id+"';",null);
         return res;
     }
 
     public Cursor profileDB_corporealInfo_retrieve(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_PHYSICALINFO+"] WHERE "+T_PHYSICALINFO_USERID+"='"+id+"'",null);
+        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_PHYSICALINFO+"] WHERE "+T_PHYSICALINFO_USERID+"='"+id+"';",null);
         return res;
     }
 
     public String getId_from_email(String email){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res=db.rawQuery("SELECT ["+ T_USER_ID+"] FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"='"+email+"'",null);
+        Cursor res=db.rawQuery("SELECT ["+ T_USER_ID+"] FROM ["+TABLE_USER+"] WHERE "+T_USER_EMAIL+"='"+email+"';",null);
         res.moveToFirst();
         return res.getString(0).toString();
     }
 
+    public Cursor retrieve_User_Class_Info(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res=db.rawQuery("SELECT * FROM ["+TABLE_USER+"] WHERE "+T_USER_ID+"='"+id+"';",null);
+        return res;
+    }
 
     public Cursor viewAll(String email) {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -1,8 +1,13 @@
 package ir.geek.parvaneh.dataClasses;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import ir.geek.parvaneh.DatabaseHelper;
 import saman.zamani.persiandate.PersianDate;
 import saman.zamani.persiandate.PersianDateFormat;
 
@@ -11,40 +16,26 @@ import saman.zamani.persiandate.PersianDateFormat;
  */
 
 public class UserProfile {
-    String firstName, lastName,city;
+    String firstName, lastName, city;
     Date dob;
-    public UserProfile(int id){
+
+    public UserProfile(String id, Context context) {
         //ToDo: get profile from db select firstName from profile where id=id
-        if(id==1){
-            firstName ="zahra";
-            lastName ="zahraabhari76@gmail.com";
-            city="123456";
-            try {
-                dob=new SimpleDateFormat("yyyy-MM-dd").parse("1997-08-25");
-            }
-            catch (Exception e){}
+        DatabaseHelper p_db = new DatabaseHelper(context);
 
-
-        }
-        else if(id==2){
-            firstName ="ali";
-            lastName ="zahraabhari76@gmail.com";
-            city="98562";
-            try {
-                dob=new SimpleDateFormat("yyyy-MM-dd").parse("1997-01-5");
-            }
-            catch (Exception e){}
+        try {
+            Cursor userprofiledb = p_db.profileDB_personalInfo_retrieve(id);
+            userprofiledb.moveToFirst();
+            firstName = userprofiledb.getString(1);
+            lastName = userprofiledb.getString(2);
+            dob = new SimpleDateFormat("yyyy-MM-dd").parse(userprofiledb.getString(3));
+            city = userprofiledb.getString(4);
+        } catch (Exception e) {
+            Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
 
         }
-        else if(id==3){
-            firstName ="vahid";
-            lastName ="zahraabhari76@gmail.com";
-            city="4567";
-            try {
-                dob=new SimpleDateFormat("yyyy-MM-dd").parse("1997-03-23");
-            }
-            catch (Exception e){}
-        }
+
+
     }
 
     public String getFirstName() {
@@ -57,5 +48,16 @@ public class UserProfile {
 
     public String getDob() {
         return new PersianDateFormat("Y-m-d").format(new PersianDate(dob));
+    }
+
+    public void update(String userid, String firstname, String lastname, String dob, String city) {
+
+        try {
+            this.firstName = firstname;
+            this.lastName = lastname;
+            this.city=city;
+            this.dob = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
+        } catch (Exception e) {
+        }
     }
 }

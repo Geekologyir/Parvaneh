@@ -141,9 +141,9 @@ public class Req_CoachActivity extends AppCompatActivity {
     private void retviatData(){
         //ToDo: get alluser from db
         allusers= new ArrayList<User>();
-        allusers.add(new User(1));
-        allusers.add(new User(2));
-        allusers.add(new User(3));
+        allusers.add(new User("1",context));
+        allusers.add(new User("2",context));
+        allusers.add(new User("3",context));
 
         String searchword=searchBox.getText().toString();
         for(User user:allusers){

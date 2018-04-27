@@ -11,9 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ir.geek.parvaneh.dataClasses.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SignupActivity extends AppCompatActivity {
+    User user;
 
     private TextView loginLink;
     private Button Signup_Btn;
@@ -52,26 +54,24 @@ public class SignupActivity extends AppCompatActivity {
         Signup_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte result =p_db.signupDB(email_et.getText().toString(),password_et.getText().toString());
+                String result = User.getInstance().signUp(email_et.getText().toString(),password_et.getText().toString(),SignupActivity.this);
 
-                if (result == 1) {
+                //byte result =p_db.signupDB(email_et.getText().toString(),password_et.getText().toString());
+                if(result == "Duplicate"){
+                    Toast.makeText(SignupActivity.this,"ایمیل تکراری است.لطفا ایمیل دیگری را امتحان کنید.",Toast.LENGTH_SHORT).show();
+                } else if (result == null) {
+                    Toast.makeText(SignupActivity.this,"عملیات با بروز مشکل مواجه شده است، لطفا مجددا امتحان نمایید.",Toast.LENGTH_SHORT).show();
+                } else {
                     Toast.makeText(SignupActivity.this,"ثبت نام با موفقت انجام شد.",Toast.LENGTH_SHORT).show();
-                    addToSharedPreferences();
+                    //user = new User(email_et.getText().toString(),password_et.getText().toString());
+                    addToSharedPreferences(result);
                     startActivity(new Intent(SignupActivity.this,MenuActivity.class));
                     finish();
-                }
-
-                else if(result==0){
-                    Toast.makeText(SignupActivity.this,"عملیات با بروز مشکل مواجه شده است، لطفا مجددا امتحان نمایید.",Toast.LENGTH_SHORT).show();
-                }
-                else if(result==2){
-                    Toast.makeText(SignupActivity.this,"ایمیل تکراری است.لطفا ایمیل دیگری را امتحان کنید.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
-    private void addToSharedPreferences(){
+    public void addToSharedPreferences(String userid){
         SharedPreferences shPref;
 
         String MyPref = "MyPrefers";
@@ -82,12 +82,14 @@ public class SignupActivity extends AppCompatActivity {
 
         SharedPreferences.Editor sEdit = shPref.edit();
         sEdit.putString(shEmail,email_et.getText().toString());
-        String id=p_db.getId_from_email(email_et.getText().toString());
+        String id=userid;
         sEdit.putString(shId,id);
         sEdit.commit();
 
         Toast.makeText(SignupActivity.this,shPref.getString(shEmail,null)+"\n"+shPref.getString(shId,null),Toast.LENGTH_LONG).show();
     }
+
+
 
 
 }

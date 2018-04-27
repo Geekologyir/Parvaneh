@@ -91,13 +91,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:clickable="false"
                             android:focusable="false"
+                            android:clickable="false"
                             android:hint="@string/name"
                             android:inputType="textPersonName"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textSize="20sp"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
 
@@ -119,13 +119,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:clickable="false"
                             android:focusable="false"
+                            android:clickable="false"
                             android:hint="@string/Lname"
                             android:inputType="textPersonName"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textSize="20sp"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -146,12 +146,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:clickable="false"
                             android:focusable="false"
+                            android:clickable="false"
                             android:hint="@string/city"
+                            android:inputType="number"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textSize="20sp"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -171,15 +172,14 @@
                             android:id="@+id/DOB"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:autoText="false"
                             android:background="@null"
-                            android:clickable="false"
-                            android:focusable="false"
                             android:hint="@string/dob"
                             android:inputType="number"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textSize="20sp"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -250,13 +250,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:clickable="false"
                             android:focusable="false"
+                            android:clickable="false"
                             android:hint="@string/height"
                             android:inputType="number"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textSize="20sp"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -275,13 +275,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:clickable="false"
-                            android:focusable="false"
                             android:hint="@string/weight"
                             android:inputType="number"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textSize="20sp"
+                            android:focusable="false"
+                            android:clickable="false"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                     </android.support.design.widget.TextInputLayout>

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ir.geek.parvaneh.dataClasses.User;
 import saman.zamani.persiandate.PersianDate;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -36,12 +37,12 @@ public class ProfileActivity extends AppCompatActivity {
     private PersianCalendar persianCalendar;
     private String date;
     DatabaseHelper p_db = new DatabaseHelper(this);
-
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        String id = getShId();
+         id= User.getInstance().getShId(getSharedPreferences("MyPrefers", Context.MODE_PRIVATE));
         initializeViews();
         retrieveData(id);
         setClickHanlders();
@@ -112,10 +113,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void profile_retrieve_personal_info(String id) {
-
         Cursor p_cursor = p_db.profileDB_personalInfo_retrieve(id);
         String a = Integer.toString(p_cursor.getCount());
-
         Toast.makeText(ProfileActivity.this, a, Toast.LENGTH_SHORT).show();
         if (p_cursor.getCount() != 0) {
             p_cursor.moveToFirst();
@@ -155,11 +154,11 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
                 editPersonal.setText(getString(R.string.done));
-                editPersonal.setTextColor(getColor(R.color.link));
+                editPersonal.setTextColor(ContextCompat.getColor(context, R.color.link));
                 editPersonal.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        p_db.profileDB_personalInfo(getShId(),fName.getText().toString(),lName.getText().toString(),dbdate,city.getText().toString());
+                        p_db.profileDB_personalInfo(id,fName.getText().toString(),lName.getText().toString(),dbdate,city.getText().toString());
                         // ToDo : Save changes in db personal information
                         finish();
                         startActivity(getIntent());
@@ -178,11 +177,11 @@ public class ProfileActivity extends AppCompatActivity {
                     e.setClickable(true);
                 }
                 editCorporeal.setText(getString(R.string.done));
-                editCorporeal.setTextColor(getColor(R.color.link));
+                editCorporeal.setTextColor(ContextCompat.getColor(context, R.color.link));
                 editCorporeal.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        p_db.profileDB_corporealInfo(getShId(),height.getText().toString(),weight.getText().toString());
+                        p_db.profileDB_corporealInfo(id,height.getText().toString(),weight.getText().toString());
                         // ToDo : Save changes in db corporeal information
                         finish();
                         startActivity(getIntent());
@@ -235,14 +234,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         return shDate.toDate();
     }
-    private String getShId() {
-        String MyPref = "MyPrefers";
-        String shEmail = "shEmail";
-        String shId = "shId";
-        SharedPreferences shPref;
-        shPref = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
-        return shPref.getString(shId, null);
-    }
+
 
     private String getShEmail() {
         String MyPref = "MyPrefers";
@@ -252,5 +244,12 @@ public class ProfileActivity extends AppCompatActivity {
         shPref = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         return shPref.getString(shEmail, null);
     }
-
+    /*private String getShId() {
+        String MyPref = "MyPrefers";
+        String shEmail = "shEmail";
+        String shId = "shId";
+        SharedPreferences shPref;
+        shPref = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        return shPref.getString(shId, null);
+    }*/
 }
