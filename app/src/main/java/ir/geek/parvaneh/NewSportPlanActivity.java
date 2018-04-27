@@ -108,7 +108,7 @@ public class NewSportPlanActivity extends AppCompatActivity {
         if(getIntent().getExtras() != null) {
             if (getIntent().getExtras().containsKey("spId")) {
                 ArrayList<Integer> ids = new ArrayList<Integer>();
-                //Select Ids from sportplans where spId = spId
+                //ToDo : Select Ids from sportplans where spId = spId
                 ids.add(1);
                 ids.add(2);
                 ids.add(3);

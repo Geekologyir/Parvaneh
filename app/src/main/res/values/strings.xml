@@ -80,4 +80,7 @@
     <string name="five_minutes">5</string>
     <string name="ten_minutes">10</string>
     <string name="rest">استراحت</string>
+    <string name="medium">متوسط</string>
+    <string name="hard">سخت</string>
+    <string name="account_info_title">اطلاعات حساب کاربری</string>
 </resources>

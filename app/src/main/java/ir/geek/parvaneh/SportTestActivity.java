@@ -21,14 +21,12 @@ import android.widget.TextView;
 import com.universalvideoview.UniversalMediaController;
 import com.universalvideoview.UniversalVideoView;
 
+import ir.geek.parvaneh.dataClasses.SportTest;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SportTestActivity extends AppCompatActivity implements UniversalVideoView.VideoViewCallback {
-    String title;
-    String difficulty;
-    int duration;
-    String description;
-    String videoPath;
+    int sportTestId;
+    SportTest sportTest;
 
     android.support.v7.widget.Toolbar toolbar;
     TextView difficultyView;
@@ -38,7 +36,7 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
     DrawerLayout mDrawerLayout;
     Context context;
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "SportTestActivity";
     private static final String SEEK_POSITION_KEY = "SEEK_POSITION_KEY";
 
     UniversalVideoView mVideoView;
@@ -63,24 +61,33 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
     }
     private void retrieveData () {
         // ToDO : Get Data from db
-        title = getIntent().getExtras().getString("title");
-        difficulty = getString(R.string.easy);
-        duration = 120;
-        description = "تمرین هوازی (ایروبیک) (به انگلیسی: Aerobic exercise) نوعی فعالیت ورزشی بوده که هدف آن بهبود سیستم مصرف اکسیژن می‌باشد. هوازی ترجمه واژه ایروبیک (Aerobic) می‌باشد که به معنی با اکسیژن بوده و به نیاز به اکسیژن در سوخت و ساز بدن و فرایند تولید انرژی اشاره دارد. تمرین‌های هوازی بسیاری وجود دارند که با شدتی ملایم و بصورت مداوم انجام می‌شوند.";
-        videoPath = "android.resource://" + getPackageName() + "/" + R.raw.video1;
+
+        sportTestId = Integer.parseInt(getIntent().getExtras().getString("id"));
+
+        sportTest = new SportTest(sportTestId,null);
     }
     private void initializeViews() {
         context = getApplicationContext();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        changeActionBar(title);
+        changeActionBar(sportTest.getTitle());
 
         difficultyView = (TextView) findViewById(R.id.difficulty);
-        difficultyView.setText(difficulty);
-        durationView = (TextView) findViewById(R.id.duration);
-        durationView.setText("تست");
+        switch (sportTest.getDifficulty()) {
+            case 0:
+                difficultyView.setText(getString(R.string.easy));
+                break;
+            case 1:
+                difficultyView.setText(getString(R.string.medium));
+                break;
+            case 2:
+                difficultyView.setText(getString(R.string.hard));
+                break;
+        }
+        durationView = (TextView) findViewById(R.id.videoDuration);
+        durationView.setText(sportTest.getDuration() + " " + getString(R.string.minutes));
         descriptionView = (TextView) findViewById(R.id.description);
-        descriptionView.setText(description);
+        descriptionView.setText(sportTest.getDescription());
 
         mVideoLayout = findViewById(R.id.video_layout);
         mBottomLayout = findViewById(R.id.bottom_layout);
@@ -98,7 +105,7 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
                     mVideoView.seekTo(mSeekPosition);
                 }
                 mVideoView.start();
-                mMediaController.setTitle(title);
+                mMediaController.setTitle(sportTest.getTitle());
             }
         });
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -250,7 +257,7 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
                 videoLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 videoLayoutParams.height = cachedHeight;
                 mVideoLayout.setLayoutParams(videoLayoutParams);
-                mVideoView.setVideoPath(videoPath);
+                mVideoView.setVideoPath("/sdcard/parvaneh/sportTest/videos/"+sportTest.getVideoFileName());
                 mVideoView.requestFocus();
             }
         });

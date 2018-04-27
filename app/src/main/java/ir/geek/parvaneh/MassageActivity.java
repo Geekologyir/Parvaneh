@@ -3,13 +3,11 @@ package ir.geek.parvaneh;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,23 +15,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.VideoView;
+import android.widget.Toast;
 
 import com.universalvideoview.UniversalMediaController;
 import com.universalvideoview.UniversalVideoView;
 
+import ir.geek.parvaneh.dataClasses.Massage;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MassageActivity extends AppCompatActivity implements UniversalVideoView.VideoViewCallback {
-
-    String title;
-    String difficulty;
-    int duration;
-    String description;
-    String videoPath;
+    int massageId;
+    Massage massage;
 
     android.support.v7.widget.Toolbar toolbar;
     TextView difficultyView;
@@ -69,26 +63,34 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
     }
 
     private void retrieveData() {
-        // ToDO : Get Data from db
-        title = getIntent().getExtras().getString("title");
-        difficulty = getString(R.string.easy);
-        duration = 120;
-        description = "تمرین هوازی (ایروبیک) (به انگلیسی: Aerobic exercise) نوعی فعالیت ورزشی بوده که هدف آن بهبود سیستم مصرف اکسیژن می‌باشد. هوازی ترجمه واژه ایروبیک (Aerobic) می‌باشد که به معنی با اکسیژن بوده و به نیاز به اکسیژن در سوخت و ساز بدن و فرایند تولید انرژی اشاره دارد. تمرین‌های هوازی بسیاری وجود دارند که با شدتی ملایم و بصورت مداوم انجام می‌شوند.";
-        videoPath = "android.resource://" + getPackageName() + "/" + R.raw.video1;
+        massageId = Integer.parseInt(getIntent().getExtras().getString("id"));
+       // Toast.makeText(getApplicationContext(), massageId + "", Toast.LENGTH_SHORT).show();
+        massage = new Massage(massageId, null);
     }
 
     private void initializeViews() {
         context = getApplicationContext();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        changeActionBar(title);
+        changeActionBar(massage.getTitle());
+
 
         difficultyView = (TextView) findViewById(R.id.difficulty);
-        difficultyView.setText(difficulty);
+        switch (massage.getDifficulty()) {
+            case 0:
+                difficultyView.setText(getString(R.string.easy));
+                break;
+            case 1:
+                difficultyView.setText(getString(R.string.medium));
+                break;
+            case 2:
+                difficultyView.setText(getString(R.string.hard));
+                break;
+        }
         durationView = (TextView) findViewById(R.id.videoDuration);
-        durationView.setText(duration + " دقیقه");
+        durationView.setText(massage.getDuration() + " " + getString(R.string.minutes));
         descriptionView = (TextView) findViewById(R.id.description);
-        descriptionView.setText(description);
+        descriptionView.setText(massage.getDescription());
 
         mVideoLayout = findViewById(R.id.video_layout);
         mBottomLayout = findViewById(R.id.bottom_layout);
@@ -108,7 +110,7 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
                 mVideoView.start();
             }
         });
-        mMediaController.setTitle(title);
+        mMediaController.setTitle(massage.getTitle());
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -134,7 +136,7 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
         params2.gravity = Gravity.END;
         params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
         back.setLayoutParams(params2);
-        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
+        back.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_arrow_back));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -258,7 +260,7 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
                 videoLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 videoLayoutParams.height = cachedHeight;
                 mVideoLayout.setLayoutParams(videoLayoutParams);
-                mVideoView.setVideoPath(videoPath);
+                mVideoView.setVideoPath("/sdcard/parvaneh/massages/videos/" + massage.getVideoFileName());
                 mVideoView.requestFocus();
             }
         });

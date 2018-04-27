@@ -21,7 +21,17 @@
             android:id="@+id/my_toolbar"
             layout="@layout/toolbar" />
 
-        <GridLayout
+        <GridView
+            android:id="@+id/itemsGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/my_toolbar"
+            android:layout_margin="10dp"
+            android:columnCount="2"
+            android:columnWidth="100dp"
+            android:numColumns="2"
+            android:padding="5dp"></GridView>
+        <!--<GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -104,7 +114,7 @@
             </ir.geek.parvaneh.squareLayout>
 
 
-        </GridLayout>
+        </GridLayout>-->
 
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
