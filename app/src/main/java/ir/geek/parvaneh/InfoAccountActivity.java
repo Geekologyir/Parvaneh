@@ -30,7 +30,7 @@ public class InfoAccountActivity extends AppCompatActivity {
     TextView editAccount, editPassword;
     Context context;
     DrawerLayout mDrawerLayout;
-
+    DatabaseHelper p_db=new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +116,7 @@ public class InfoAccountActivity extends AppCompatActivity {
                 editAccount.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         // ToDo : Save changes in db
                         finish();
                         startActivity(getIntent());

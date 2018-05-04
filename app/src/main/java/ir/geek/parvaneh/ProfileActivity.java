@@ -135,7 +135,7 @@ public class ProfileActivity extends AppCompatActivity {
             height.setText(p_cursor.getString(2).toString());//نام خانوادگی
 
         }
-    }
+        }
 
     private void setClickHanlders() {
         editPersonal.setOnClickListener(new View.OnClickListener() {

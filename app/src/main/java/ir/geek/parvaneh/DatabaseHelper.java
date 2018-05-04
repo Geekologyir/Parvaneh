@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import java.text.SimpleDateFormat;
@@ -207,11 +208,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 return 1;
             }
 
-        } else {
+        }
+        else {
             //email is exists
             return 2;
         }
 
+    }
+
+    public byte addtoDB(Context context,String id, String username,String email,String phonenumber) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        int sum0=0;
+        int sum1=0;
+        int sum2=0;
+        Cursor res0 = db.rawQuery("SELECT * FROM [" + TABLE_USER + "] WHERE " + T_USER_USERNAME + "='" + username + "'", null);
+        if (res0.getCount() == 0) {
+            sum0++;
+        }
+        else{
+            Toast.makeText(context,"نام کاربری تکراری است!",Toast.LENGTH_SHORT).show();
+        }
+        Cursor res1=db.rawQuery("SELECT * FROM [" + TABLE_USER + "] WHERE " + T_USER_EMAIL + "='" + email + "'", null);
+        if (res1.getCount()==0){
+            sum1++;
+        }
+        else{
+            Toast.makeText(context,"ایمیل تکراری است!",Toast.LENGTH_SHORT).show();
+        }
+        Cursor res2=db.rawQuery("SELECT * FROM [" + TABLE_USER + "] WHERE " + T_USER_PHONENUMBER + "='" + email + "'", null);
+        if (res1.getCount()==0){
+            sum2++;
+        }
+        else{
+            Toast.makeText(context,"شماره تلفن همراه تکراری است!",Toast.LENGTH_SHORT).show();
+        }
+        if(sum0==1 && sum1==1 && sum2==1){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(T_USER_EMAIL, email);
+            contentValues.put(T_USER_USERNAME, username);
+            contentValues.put(T_USER_PHONENUMBER, phonenumber);
+            long result=db.insert(TABLE_USER,null,contentValues);
+            if (result == -1) {
+
+                return 0;
+            }
+
+            else {
+                return 1;
+            }
+        }
+        else {
+            return 2;
+        }
     }
 
     public boolean forgetPasswordDB(String email){
