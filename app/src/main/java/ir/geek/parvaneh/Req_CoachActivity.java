@@ -92,7 +92,7 @@ public class Req_CoachActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //startActivity(new Intent(Req_CoachActivity.this,Req_coachItemActivity.class));
-                //finish();
+                //
             }
         });
     }
@@ -124,6 +124,7 @@ public class Req_CoachActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Req_CoachActivity.this, MenuActivity.class));
+
             }
         });
         toolbar.addView(back);

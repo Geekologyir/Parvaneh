@@ -31,6 +31,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class ProfileActivity extends AppCompatActivity {
 
     Context context;
+    ActivityUi activityUi;
+
     EditText fName, lName, city, dob, height, weight;
     List<EditText> personalFields, corporealFields;
     TextView editPersonal, editCorporeal, edite_show_account;
@@ -46,38 +48,13 @@ public class ProfileActivity extends AppCompatActivity {
         initializeViews();
         retrieveData(id);
         setClickHanlders();
-        changeActionBar(getString(R.string.profile_title));
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
-    private void changeActionBar(String titleText) {
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-        setTitle("");
-        TextView title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(titleText);
-
-        ImageView back = new ImageView(this);
-        android.support.v7.widget.Toolbar.LayoutParams params = new android.support.v7.widget.Toolbar.LayoutParams(44 * (int) context.getResources().getDisplayMetrics().density, 44 * (int) context.getResources().getDisplayMetrics().density);
-        params.gravity = Gravity.END;
-        params.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
-        back.setLayoutParams(params);
-        back.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_arrow_back));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this, MenuActivity.class));
-            }
-        });
-        toolbar.addView(back);
     }
 
     private void initializeViews() {
         context = getApplicationContext();
+        activityUi = new ActivityUi(this);
+        activityUi.changeActionBar(getString(R.string.profile_title),MenuActivity.class,false);
+
         personalFields = new ArrayList<EditText>();
         fName = (EditText) findViewById(R.id.Fname_input);
         personalFields.add(fName);
@@ -160,8 +137,8 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         p_db.profileDB_personalInfo(id,fName.getText().toString(),lName.getText().toString(),dbdate,city.getText().toString());
                         // ToDo : Save changes in db personal information
-                        finish();
                         startActivity(getIntent());
+
                     }
                 });
             }
@@ -183,8 +160,8 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         p_db.profileDB_corporealInfo(id,height.getText().toString(),weight.getText().toString());
                         // ToDo : Save changes in db corporeal information
-                        finish();
                         startActivity(getIntent());
+
                     }
                 });
             }
@@ -243,6 +220,11 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences shPref;
         shPref = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         return shPref.getString(shEmail, null);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
     /*private String getShId() {
         String MyPref = "MyPrefers";

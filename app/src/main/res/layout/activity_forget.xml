@@ -36,42 +36,79 @@
         android:layout_below="@+id/logo"
         android:padding="16dp">
 
-        <LinearLayout
-            android:id="@+id/email_login_form"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/email_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/textinputbg"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                android:id="@+id/email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/textinputbg"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/email_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textIsSelectable="false"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/forgetBtn"
-                style="@style/PrimaryBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/action_retrieve"
+                android:background="@android:color/transparent"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textIsSelectable="false"
+                android:textSize="20dp"
                 android:textStyle="bold" />
+        </android.support.design.widget.TextInputLayout>
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/forgetBtn"
+            style="@style/PrimaryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email_layout"
+            android:layout_marginTop="10dp"
+            android:text="@string/action_retrieve_request"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/verify_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/logo"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/verify_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textinputbg"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/code_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/verify_code_hint"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textIsSelectable="false"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/checkCodeBtn"
+            style="@style/PrimaryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/verify_layout"
+            android:layout_marginTop="10dp"
+            android:text="@string/action_retrieve"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -84,18 +121,18 @@
         android:layoutDirection="rtl">
 
         <TextView
+            android:id="@+id/loginLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loginLink"
-            android:textColor="@color/link"
-            android:id="@+id/loginLink"/>
+            android:textColor="@color/link" />
 
     </LinearLayout>
 
-    <!--signup progress -->
+    <!--forget progress -->
 
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/forget_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

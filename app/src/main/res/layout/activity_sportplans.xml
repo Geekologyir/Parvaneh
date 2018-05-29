@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="ir.geek.parvaneh.NewSportPlanActivity">
 
-    <include layout="@layout/navigation_view" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,24 +21,26 @@
             android:id="@+id/spList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:clickable="false"
             android:layout_below="@id/my_toolbar"
-            android:layout_marginBottom="70dp">
+            android:layout_marginBottom="70dp"
+            android:background="@null"
+            android:clickable="false">
 
         </ListView>
 
         <Button
             android:id="@+id/new_sp_btn"
+            style="@style/PrimaryBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_margin="10dp"
-            style="@style/PrimaryBtn"
             android:elevation="4dp"
             android:text="@string/new_sp_btn"
-            android:translationZ="6dp"/>
+            android:translationZ="6dp" />
 
     </RelativeLayout>
+
+    <include layout="@layout/navigation_view" />
 </android.support.v4.widget.DrawerLayout>

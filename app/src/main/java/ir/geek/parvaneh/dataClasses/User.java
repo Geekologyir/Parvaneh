@@ -1,5 +1,6 @@
 package ir.geek.parvaneh.dataClasses;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,7 +21,7 @@ import ir.geek.parvaneh.SignupActivity;
  * Created by Zahra on 4/15/2018.
  */
 
-public class User extends AppCompatActivity{
+public class User {
     String username;
     String email;
     String phoneNumber;
@@ -37,8 +38,8 @@ public class User extends AppCompatActivity{
         return instance;
     }
 
-    private User(){
-
+    public User(){
+        username="";
     }
 
     public User(String id,Context context){
@@ -88,16 +89,14 @@ public class User extends AppCompatActivity{
     }
 
 
-    public String signUp(String email, String password, Context context){
+    public String signUp(String email, String password, final Context context){
         DatabaseHelper p_db=new DatabaseHelper(context);
         byte result = p_db.signupDB(email,password);
 
         if (result == 1) {
-            Toast.makeText(context,"ثبت نام با موفقت انجام شد.",Toast.LENGTH_SHORT).show();
-
+                    //Toast.makeText(context,"ثبت نام با موفقت انجام شد.",Toast.LENGTH_SHORT).show();
             return p_db.getId_from_email(email);
         }
-
         else if(result==0){ //Fault
             return null;
         }

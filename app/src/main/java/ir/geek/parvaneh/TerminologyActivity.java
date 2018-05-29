@@ -39,6 +39,7 @@ public class TerminologyActivity extends AppCompatActivity {
     ListView queryList;
 
     Context context;
+    ActivityUi activityUi;
 
     String[] words = {"ورزش","هوازی","بدنسازی","ورزش هوازی","ورزش بدنسازی"};
     List<String> queries;
@@ -48,7 +49,6 @@ public class TerminologyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_terminology);
 
         initializeViews();
-        changeActionBar(getString(R.string.activity_terminology_title));
 
 
         queries = Arrays.asList(words);
@@ -80,11 +80,18 @@ public class TerminologyActivity extends AppCompatActivity {
         });
     }
     private void initializeViews(){
+        context = getApplicationContext();
+        activityUi = new ActivityUi(this);
+        activityUi.changeActionBar(getString(R.string.activity_terminology_title),MenuActivity.class,true);
+
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
+        toolbar.setElevation(0);
+
         searchBox = (EditText) findViewById(R.id.search_box);
         queryList = (ListView) findViewById(R.id.queries);
         queries = new ArrayList<String>();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        context = getApplicationContext();
+
     }
     private void setAdapterList(List<String> source){
         queryList.setAdapter(new ArrayAdapter<String>(TerminologyActivity.this,
@@ -93,42 +100,14 @@ public class TerminologyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 startActivity(new Intent(TerminologyActivity.this,TerminologyItemActivity.class));
-                finish();
+
             }
         });
     }
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-    private void changeActionBar(String titleText) {
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
-        setTitle("");
-        TextView title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(titleText);
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        toolbar.setElevation(0);
-
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToggle);
-
-        ImageView back = new ImageView(this);
-        android.support.v7.widget.Toolbar.LayoutParams params = new android.support.v7.widget.Toolbar.LayoutParams(44 * (int)context.getResources().getDisplayMetrics().density,44 * (int)context.getResources().getDisplayMetrics().density);
-        params.gravity= Gravity.END;
-        params.leftMargin= 20 * (int)context.getResources().getDisplayMetrics().density;
-        back.setLayoutParams(params);
-        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(TerminologyActivity.this, MenuActivity.class));
-            }
-        });
-        toolbar.addView(back);
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

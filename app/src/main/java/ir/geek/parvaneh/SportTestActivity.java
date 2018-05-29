@@ -35,6 +35,7 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
 
     DrawerLayout mDrawerLayout;
     Context context;
+    ActivityUi activityUi;
 
     private static final String TAG = "SportTestActivity";
     private static final String SEEK_POSITION_KEY = "SEEK_POSITION_KEY";
@@ -68,9 +69,12 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
     }
     private void initializeViews() {
         context = getApplicationContext();
+        activityUi = new ActivityUi(this);
+        activityUi.changeActionBar(sportTest.getTitle(),SportTestsActivity.class,false);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        changeActionBar(sportTest.getTitle());
+
 
         difficultyView = (TextView) findViewById(R.id.difficulty);
         switch (sportTest.getDifficulty()) {
@@ -118,30 +122,6 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
 
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-
-    private void changeActionBar(String titleText) {
-        setSupportActionBar(toolbar);
-        setTitle("");
-        TextView title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(titleText);
-
-        toolbar.setElevation(0);
-
-        ImageView back = new ImageView(this);
-        Toolbar.LayoutParams params2 = new Toolbar.LayoutParams(44 * (int) context.getResources().getDisplayMetrics().density, 44 * (int) context.getResources().getDisplayMetrics().density);
-        params2.gravity = Gravity.END;
-        params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
-        back.setLayoutParams(params2);
-        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SportTestActivity.this, SportTestsActivity.class));
-            }
-        });
-        toolbar.addView(back);
-
     }
 
     @Override

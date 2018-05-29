@@ -40,6 +40,7 @@ public class MassagesActivity extends AppCompatActivity {
 
     DrawerLayout mDrawerLayout;
     Context context;
+    ActivityUi activityUi;
 
     GridView gridView;
     @Override
@@ -48,13 +49,15 @@ public class MassagesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_massages);
 
         initializeViews();
-        changeActionBar(getString(R.string.massage_learning));
         handleClicks();
     }
 
     private void initializeViews(){
         context = getApplicationContext();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        activityUi = new ActivityUi(this);
+
+        activityUi.changeActionBar(getString(R.string.massage_learning),MenuActivity.class,true);
 
         // ToDo: Select ids
         List<Integer> list = new ArrayList<Integer>();
@@ -63,45 +66,6 @@ public class MassagesActivity extends AppCompatActivity {
         list.add(3);
         gridView= (GridView) findViewById(R.id.itemsGrid);
         gridView.setAdapter(new itemAdapter(context,android.R.layout.simple_list_item_1,R.id.itemImage,list));
-    }
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-    private void changeActionBar(String titleText) {
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-        setTitle("");
-        TextView title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(titleText);
-
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ActionBarDrawerToggle mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToogle);
-
-        ImageView back = new ImageView(this);
-        Toolbar.LayoutParams params2 = new Toolbar.LayoutParams(44 * (int) context.getResources().getDisplayMetrics().density, 44 * (int) context.getResources().getDisplayMetrics().density);
-        params2.gravity = Gravity.END;
-        params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
-        back.setLayoutParams(params2);
-        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MassagesActivity.this, MenuActivity.class));
-            }
-        });
-        toolbar.addView(back);
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.END);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void handleClicks() {
@@ -113,7 +77,7 @@ public class MassagesActivity extends AppCompatActivity {
                 Intent intent = new Intent(context,MassageActivity.class);
                 intent.putExtra("id", layout.getTag().toString());
                 startActivity(intent);
-                finish();
+
             }
         });
     }
@@ -125,6 +89,7 @@ public class MassagesActivity extends AppCompatActivity {
             Intent intent = new Intent(context,MassageActivity.class);
             intent.putExtra("title", titleView.getText().toString());
             startActivity(intent);
+
         }
     };
 
@@ -160,6 +125,18 @@ public class MassagesActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.END);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
 }
 

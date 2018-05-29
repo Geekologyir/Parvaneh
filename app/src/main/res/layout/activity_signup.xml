@@ -146,7 +146,7 @@
     </LinearLayout>
     <!--signup progress -->
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/signup_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -19,6 +19,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class TerminologyItemActivity extends AppCompatActivity {
     Context context;
+    ActivityUi activityUi;
+
     boolean isBookmarked;
     TextView title, body;
 
@@ -32,8 +34,6 @@ public class TerminologyItemActivity extends AppCompatActivity {
 
         initializeViews();
 
-        changeActionBar();
-
         retrieveData();
     }
 
@@ -43,25 +43,12 @@ public class TerminologyItemActivity extends AppCompatActivity {
     }
     private void initializeViews(){
         context = getApplicationContext();
-        title = (TextView) findViewById(R.id.expression_name);
-        body = (TextView) findViewById(R.id.expression_body);
-    }
-    private void retrieveData(){
-        // ToDo : Get date from db !
-        title.setText(testTitle);
-        body.setText(testBody);
-        isBookmarked = true;
-    }
-    private void changeActionBar() {
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
-        setTitle("");
-        TextView title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText("");
-
+        activityUi = new ActivityUi(this);
+        activityUi.changeActionBar("",TerminologyActivity.class,false);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
         toolbar.setElevation(0);
-        toolbar.setBackgroundColor(Color.WHITE);
 
+        /*---------- Start Bookmark -------------*/
         final ImageView bookmark = new ImageView(this);
         Toolbar.LayoutParams params1 = new Toolbar.LayoutParams(40 * (int) context.getResources().getDisplayMetrics().density, 40 * (int) context.getResources().getDisplayMetrics().density);
         params1.gravity = Gravity.START;
@@ -78,9 +65,11 @@ public class TerminologyItemActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (isBookmarked) {
+                            // ToDo : debookmark
                             bookmark.setImageDrawable(ContextCompat.getDrawable(context,R.mipmap.bookmark));
                             isBookmarked = false;
                         } else {
+                            // ToDo : bookmark
                             bookmark.setImageDrawable(ContextCompat.getDrawable(context,R.mipmap.bookmark_1));
                             isBookmarked = true;
                         }
@@ -89,21 +78,17 @@ public class TerminologyItemActivity extends AppCompatActivity {
             }
         };
         new Thread(myRun).run();
+        activityUi.addViewToToolbar(bookmark);
 
-        ImageView back = new ImageView(this);
-        Toolbar.LayoutParams params2 = new Toolbar.LayoutParams(44 * (int) context.getResources().getDisplayMetrics().density, 44 * (int) context.getResources().getDisplayMetrics().density);
-        params2.gravity = Gravity.END;
-        params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
-        back.setLayoutParams(params2);
-        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(TerminologyItemActivity.this, TerminologyActivity.class));
-            }
-        });
+        /*---------- End Bookmark -------------*/
 
-        toolbar.addView(bookmark);
-        toolbar.addView(back);
+        title = (TextView) findViewById(R.id.expression_name);
+        body = (TextView) findViewById(R.id.expression_body);
+    }
+    private void retrieveData(){
+        // ToDo : Get date from db !
+        title.setText(testTitle);
+        body.setText(testBody);
+        isBookmarked = true;
     }
 }

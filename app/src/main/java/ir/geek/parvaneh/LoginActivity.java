@@ -120,8 +120,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         forgetLink.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,ForgetActivity.class));
-                finish();
+                Intent intent = new Intent(LoginActivity.this,ForgetActivity.class);
+                intent.putExtra("Email",mEmailView.getText().toString());
+                startActivity(intent);
+
+
             }
         });
 
@@ -129,8 +132,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         signupLink.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,SignupActivity.class));
-                finish();
+                Intent intent = new Intent(LoginActivity.this,SignupActivity.class);
+                intent.putExtra("Email",mEmailView.getText().toString());
+                startActivity(intent);
+
             }
         });
         viewAll();
@@ -163,8 +168,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        // Check for a valid password.
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_empty_password));
+            focusView = mPasswordView;
+            cancel = true;
+        } else if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -312,7 +321,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            byte res=p_db.loginDB(mEmailView.getText().toString(),mPasswordView.getText().toString());
+            byte res=p_db.loginDB(mEmail,mPassword);
             //Log.d("ali",Byte.toString(res));
 
             if(res==0){
@@ -324,7 +333,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             else if(res==2){
                 return false;
             }
-            // TODO: register the new account here.
 
             return false;
         }
@@ -338,6 +346,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Toast.makeText(LoginActivity.this,"وارد شد",Toast.LENGTH_SHORT).show();
                 addToSharedPreferences();
                 startActivity(new Intent(LoginActivity.this,MenuActivity.class));
+                // ToDo : finish();
+
             }
 
             else {

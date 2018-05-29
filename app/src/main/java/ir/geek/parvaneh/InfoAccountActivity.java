@@ -3,6 +3,7 @@ package ir.geek.parvaneh;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,12 +27,13 @@ public class InfoAccountActivity extends AppCompatActivity {
     String userId;
     User user;
 
-    EditText username,email,phone;
+    EditText username, email, phone;
     List<EditText> accountFields;
     TextView editAccount, editPassword;
     Context context;
     DrawerLayout mDrawerLayout;
-    DatabaseHelper p_db=new DatabaseHelper(this);
+    DatabaseHelper p_db = new DatabaseHelper(this);
+    ActivityUi activityUi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,45 +43,15 @@ public class InfoAccountActivity extends AppCompatActivity {
         initializeViews();
         retrieveData();
         setClickHanlders();
-        changeActionBar(getString(R.string.account_info_title) );
+
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
-    private void changeActionBar(String titleText) {
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar));
-        setTitle("");
-        TextView title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(titleText);
-
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ActionBarDrawerToggle mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToogle);
-
-        ImageView back = new ImageView(this);
-        Toolbar.LayoutParams params2 = new Toolbar.LayoutParams(44 * (int) context.getResources().getDisplayMetrics().density, 44 * (int) context.getResources().getDisplayMetrics().density);
-        params2.gravity = Gravity.END;
-        params2.leftMargin = 20 * (int) context.getResources().getDisplayMetrics().density;
-        back.setLayoutParams(params2);
-        back.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_arrow_back));
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(InfoAccountActivity.this, ProfileActivity.class));
-            }
-        });
-
-        toolbar.addView(back);
-    }
     private void initializeViews() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         context = getApplicationContext();
+        activityUi = new ActivityUi(this);
+        activityUi.changeActionBar(getString(R.string.change_password_title), ProfileActivity.class, true);
+
         accountFields = new ArrayList<EditText>();
         username = (EditText) findViewById(R.id.username);
         accountFields.add(username);
@@ -94,7 +67,7 @@ public class InfoAccountActivity extends AppCompatActivity {
 
     private void retrieveData() {
         userId = "1";
-        user = new User(userId,context);
+        user = new User(userId, context);
         username.setText(user.getUsername());
         email.setText(user.getEmail());
         phone.setText(user.getPhoneNumber());
@@ -118,8 +91,9 @@ public class InfoAccountActivity extends AppCompatActivity {
                     public void onClick(View view) {
 
                         // ToDo : Save changes in db
-                        finish();
+
                         startActivity(getIntent());
+
                     }
                 });
             }
@@ -128,8 +102,25 @@ public class InfoAccountActivity extends AppCompatActivity {
         editPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(InfoAccountActivity.this,EditPasswordActivity.class));
+                startActivity(new Intent(InfoAccountActivity.this, EditPasswordActivity.class));
+
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+                mDrawerLayout.openDrawer(GravityCompat.END);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

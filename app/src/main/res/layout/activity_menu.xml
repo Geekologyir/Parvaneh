@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ir.geek.parvaneh.MenuActivity">
@@ -275,7 +273,7 @@
             </GridLayout>
         </ScrollView>
     </RelativeLayout>
-    <include
-        layout="@layout/navigation_view"/>
+
+    <include layout="@layout/navigation_view" />
 </android.support.v4.widget.DrawerLayout>
 
