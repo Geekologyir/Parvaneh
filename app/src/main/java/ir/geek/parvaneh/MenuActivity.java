@@ -2,35 +2,32 @@ package ir.geek.parvaneh;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.GridLayout;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.geek.parvaneh.BodyBuildActivity;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MenuActivity extends AppCompatActivity {
-
+    LinearLayout AlertBox;
+    TextView errorMsg;
     RelativeLayout document;
     RelativeLayout spplan;
     RelativeLayout fdplan;
@@ -57,6 +54,36 @@ public class MenuActivity extends AppCompatActivity {
         ActivityUi activityUi = new ActivityUi(this);
         activityUi.changeActionBar(getString(R.string.activity_menu_title),null,true);
 
+        AlertBox = (LinearLayout) findViewById(R.id.alertBox);
+        errorMsg = (TextView) findViewById(R.id.errorMsg);
+
+        // ToDo : Determine conditions to check
+        boolean conectionCheck = true;
+        boolean accountInfoCheck = true;
+        boolean profileCheck = true;
+
+        if (!conectionCheck) {
+            errorMsg.setText(getString(R.string.not_connected_error));
+            AlertBox.setVisibility(View.VISIBLE);
+        } else if (!accountInfoCheck) {
+            errorMsg.setText(getString(R.string.incomplete_account_info_error));
+            AlertBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(MenuActivity.this, InfoAccountActivity.class));
+                }
+            });
+            AlertBox.setVisibility(View.VISIBLE);
+        } else if (!profileCheck) {
+            errorMsg.setText(getString(R.string.incomplete_profile_error));
+            AlertBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(MenuActivity.this, ProfileActivity.class));
+                }
+            });
+            AlertBox.setVisibility(View.VISIBLE);
+        }
 
         btns = new ArrayList<RelativeLayout>();
         document = (RelativeLayout) findViewById(R.id.document);
@@ -140,7 +167,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-        GridLayout gridLayout = (GridLayout) findViewById(R.id.menuGrid);
+        //GridLayout gridLayout = (GridLayout) findViewById(R.id.menuGrid);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);

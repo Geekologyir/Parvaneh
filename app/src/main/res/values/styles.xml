@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:typeface">normal</item>
+        <item name="android:textAppearance">@style/NormalText</item>
     </style>
     <style name="PrimaryBtn" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/btn</item>
@@ -18,5 +19,23 @@
         <item name="android:background">@drawable/light_btn</item>
         <item name="android:textColor">@color/link</item>
         <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="AlertBox">
+        <item name="android:background">@color/mdtp_red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">5dp</item>
+
+    </style>
+
+    <style name="NormalText" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/iransans.ttf</item>
+    </style>
+
+    <style name="BoldText" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/iransans_bold.ttf</item>
     </style>
 </resources>

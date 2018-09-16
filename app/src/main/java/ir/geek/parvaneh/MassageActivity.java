@@ -121,6 +121,8 @@ public class MassageActivity extends AppCompatActivity implements UniversalVideo
                 Log.d(TAG, "onCompletion ");
             }
         });
+        ((TextView) findViewById(R.id.loading_text)).setText("در حال بارگذاری ...");
+        ((TextView) findViewById(R.id.error_text)).setText("خطا در برقراری ارتباط. فایل یافت نشد");
     }
 
     protected void attachBaseContext(Context newBase) {

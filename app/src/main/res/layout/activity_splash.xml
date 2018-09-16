@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/layoutBackground"
-    android:id="@+id/activity_splash">
+    android:background="@color/dark">
 
 
     <ImageView
@@ -13,7 +14,9 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:tint="@color/colorPrimary"
+        app:tintMode="screen" />
 
     <TextView
         android:id="@+id/title"
@@ -22,11 +25,19 @@
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="Parvaneh"
+        android:text="پروانه"
+        android:textColor="@color/colorPrimary"
         android:textSize="35sp"
-        android:textStyle="bold|italic"
-        android:typeface="sans" />
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/decription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/title"
+        android:text="قدم به قدم تا تندرستی"
+        android:textColor="@color/colorPrimary" />
 
 
 </RelativeLayout>

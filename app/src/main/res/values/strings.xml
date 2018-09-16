@@ -90,4 +90,8 @@
     <string name="change_password_title">تغییر رمز ورود</string>
     <string name="verify_code_hint">کد بازیابی رمز ارسال شده به پست الکترونیک</string>
     <string name="email_not_found">ارتباط برقرار نشد یا پست الکترونیک مورد نظر یافت نشد</string>
+
+    <string name="incomplete_account_info_error">اطلاعات حساب کاربری شما ناقص است. لطفا نسبت به تکمیل آن اقدام نمایید.</string>
+    <string name="incomplete_profile_error">اطلاعات فردی شما ناقص است. لطفا نسبت به تکمیل آن اقدام نمایید.</string>
+    <string name="not_connected_error">اتصال برقرار نیست</string>
 </resources>

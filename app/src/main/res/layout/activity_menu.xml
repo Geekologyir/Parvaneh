@@ -4,6 +4,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context="ir.geek.parvaneh.MenuActivity">
 
 
@@ -16,11 +17,29 @@
             android:id="@+id/my_toolbar"
             layout="@layout/toolbar" />
 
+        <LinearLayout
+            android:id="@+id/alertBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_toolbar"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/errorMsg"
+                style="@style/AlertBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/my_toolbar"
+            android:layout_below="@id/alertBox"
             android:paddingLeft="5dp">
+
 
             <GridLayout
                 android:id="@+id/menuGrid"
@@ -60,7 +79,9 @@
                         android:layout_below="@id/massageicon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/massage_learning" />
+                        android:text="@string/massage_learning"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -90,7 +111,9 @@
                         android:layout_below="@id/spplanicon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/sport_plans" />
+                        android:text="@string/sport_plans"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -119,7 +142,9 @@
                         android:layout_below="@id/sptesticon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/sport_tests" />
+                        android:text="@string/sport_tests"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -152,7 +177,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="@string/terminologies"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -181,7 +207,9 @@
                         android:layout_below="@id/fdplanicon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/food_plans" />
+                        android:text="@string/food_plans"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -210,7 +238,9 @@
                         android:layout_below="@id/documenticon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/profile" />
+                        android:text="@string/profile"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -239,7 +269,9 @@
                         android:layout_below="@id/bodybldicon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/body_building_learnings" />
+                        android:text="@string/body_building_learnings"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -268,7 +300,9 @@
                         android:layout_below="@id/talenticon"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="@string/talent_detecting" />
+                        android:text="@string/talent_detecting"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/BoldText" />
                 </RelativeLayout>
             </GridLayout>
         </ScrollView>

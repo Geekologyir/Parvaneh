@@ -2,14 +2,12 @@ package ir.geek.parvaneh;
 
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
-import android.support.v7.view.menu.MenuView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.woxthebox.draglistview.DragItemAdapter;
@@ -17,7 +15,6 @@ import com.woxthebox.draglistview.DragItemAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import ir.geek.parvaneh.dataClasses.SportPlan;
 import ir.geek.parvaneh.dataClasses.SportPlanItem;
 
 class spItemAdapter extends DragItemAdapter<Pair<Long, String>, spItemAdapter.ViewHolder> {

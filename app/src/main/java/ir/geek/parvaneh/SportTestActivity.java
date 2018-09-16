@@ -118,6 +118,9 @@ public class SportTestActivity extends AppCompatActivity implements UniversalVid
                 Log.d(TAG, "onCompletion ");
             }
         });
+
+        ((TextView) findViewById(R.id.loading_text)).setText("در حال بارگذاری ...");
+        ((TextView) findViewById(R.id.error_text)).setText("خطا در برقراری ارتباط. فایل یافت نشد");
     }
 
     protected void attachBaseContext(Context newBase) {

@@ -44,8 +44,6 @@ public class ActivityUi {
     }
 
     public void changeActionBar(String titleText, final Class previousActivity, Boolean hasDrawer) {
-
-        View row = (View) activity.findViewById(R.id.container);
         Toolbar toolbar = (Toolbar) activity.findViewById(R.id.my_toolbar);
 
         activity.setSupportActionBar(toolbar);

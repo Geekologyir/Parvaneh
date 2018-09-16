@@ -50,7 +50,7 @@ public class InfoAccountActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         context = getApplicationContext();
         activityUi = new ActivityUi(this);
-        activityUi.changeActionBar(getString(R.string.change_password_title), ProfileActivity.class, true);
+        activityUi.changeActionBar(getString(R.string.account_info_title), ProfileActivity.class, true);
 
         accountFields = new ArrayList<EditText>();
         username = (EditText) findViewById(R.id.username);

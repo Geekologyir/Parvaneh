@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="برنامه ورزشی"
+                android:textAppearance="@style/BoldText"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nextTime"
                 android:text="هوازی، دو، شنا"
+                android:textAppearance="@style/BoldText"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
